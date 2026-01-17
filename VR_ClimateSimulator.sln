@@ -1,0 +1,64 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VRClimateChange", "VRClimateChange", "{C3236406-CDB9-5C9F-6C38-30B19C4EA127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "VRClimateChange\Assembly-CSharp-Editor.csproj", "{88335044-7855-FA3E-EAA1-DEF55956AC71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "VRClimateChange\Assembly-CSharp.csproj", "{53D67F5D-D500-E08E-7CCF-F359174F9E30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator", "VRClimateChange\Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj", "{F506A2BD-3763-F162-7E28-B88ADDBE99B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor", "VRClimateChange\Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor.csproj", "{BE73C559-767A-F13F-2843-66E0DE4292B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets", "VRClimateChange\Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj", "{779DE318-5FEA-DC07-CB10-BCE150AB364E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor", "VRClimateChange\Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj", "{A0144197-444D-D2CF-4897-4BC9232A5332}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88335044-7855-FA3E-EAA1-DEF55956AC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88335044-7855-FA3E-EAA1-DEF55956AC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88335044-7855-FA3E-EAA1-DEF55956AC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88335044-7855-FA3E-EAA1-DEF55956AC71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D67F5D-D500-E08E-7CCF-F359174F9E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D67F5D-D500-E08E-7CCF-F359174F9E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D67F5D-D500-E08E-7CCF-F359174F9E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D67F5D-D500-E08E-7CCF-F359174F9E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F506A2BD-3763-F162-7E28-B88ADDBE99B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F506A2BD-3763-F162-7E28-B88ADDBE99B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F506A2BD-3763-F162-7E28-B88ADDBE99B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F506A2BD-3763-F162-7E28-B88ADDBE99B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE73C559-767A-F13F-2843-66E0DE4292B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE73C559-767A-F13F-2843-66E0DE4292B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE73C559-767A-F13F-2843-66E0DE4292B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE73C559-767A-F13F-2843-66E0DE4292B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779DE318-5FEA-DC07-CB10-BCE150AB364E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779DE318-5FEA-DC07-CB10-BCE150AB364E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779DE318-5FEA-DC07-CB10-BCE150AB364E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779DE318-5FEA-DC07-CB10-BCE150AB364E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0144197-444D-D2CF-4897-4BC9232A5332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0144197-444D-D2CF-4897-4BC9232A5332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0144197-444D-D2CF-4897-4BC9232A5332}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0144197-444D-D2CF-4897-4BC9232A5332}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88335044-7855-FA3E-EAA1-DEF55956AC71} = {C3236406-CDB9-5C9F-6C38-30B19C4EA127}
+		{53D67F5D-D500-E08E-7CCF-F359174F9E30} = {C3236406-CDB9-5C9F-6C38-30B19C4EA127}
+		{F506A2BD-3763-F162-7E28-B88ADDBE99B0} = {C3236406-CDB9-5C9F-6C38-30B19C4EA127}
+		{BE73C559-767A-F13F-2843-66E0DE4292B6} = {C3236406-CDB9-5C9F-6C38-30B19C4EA127}
+		{779DE318-5FEA-DC07-CB10-BCE150AB364E} = {C3236406-CDB9-5C9F-6C38-30B19C4EA127}
+		{A0144197-444D-D2CF-4897-4BC9232A5332} = {C3236406-CDB9-5C9F-6C38-30B19C4EA127}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66AAEAA7-6210-4A59-9B22-36165B9525B9}
+	EndGlobalSection
+EndGlobal

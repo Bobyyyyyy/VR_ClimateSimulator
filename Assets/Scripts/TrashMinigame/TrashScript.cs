@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Paper : MonoBehaviour
+public class TrashScript : MonoBehaviour
 {
 
     public TrashData data;

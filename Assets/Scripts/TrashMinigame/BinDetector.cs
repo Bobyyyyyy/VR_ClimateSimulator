@@ -11,10 +11,7 @@ public class BinDetector : MonoBehaviour
         GameObject collidedObject = other.gameObject;
         if (collidedObject.CompareTag("Trash"))
         {
-           
-            AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.Play();
-            if(collidedObject.GetComponent<Paper>().data.type == BinType)
+            if(collidedObject.GetComponent<TrashScript>().data.type == BinType)
             {
                 Destroy(collidedObject);
             }

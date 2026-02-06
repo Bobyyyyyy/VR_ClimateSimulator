@@ -31,7 +31,6 @@ public class ThermostatController : MonoBehaviour
     void UpdateDisplay(float temp)
     {
         displayScreen.text = temp.ToString("F1") + "°C";
-
     }
 
 

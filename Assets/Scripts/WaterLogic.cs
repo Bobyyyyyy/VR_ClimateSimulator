@@ -1,23 +1,37 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class WaterLogic : MonoBehaviour
+public class RubinettoVR : MonoBehaviour
 {
-    private ParticleSystem _ps;
+    [Header("Trascina qui l'oggetto Acqua")]
+    public ParticleSystem acquaEffect; 
+
+    private HingeJoint mioHinge;
 
     void Start()
     {
-        _ps = GetComponent<ParticleSystem>();
-        StopWater(); // Parte chiuso di default
+        mioHinge = GetComponent<HingeJoint>();
+        if(acquaEffect != null) acquaEffect.Stop();
     }
 
-    public void SetWaterFlow(float intensity) 
+    void Update()
     {
-        var emission = _ps.emission;
-        emission.rateOverTime = intensity * 200f; // 200 è il flusso massimo
-        
-        if (intensity > 0.01f && !_ps.isPlaying) _ps.Play();
-        else if (intensity <= 0.01f) _ps.Stop();
-    }
+        if (acquaEffect == null) return;
 
-    public void StopWater() => _ps.Stop();
+        // Leggiamo l'angolo. NON usiamo Abs, così se va in negativo (errore fisico) l'acqua non parte.
+        float angolo = mioHinge.angle;
+
+        // LOGICA MIGLIORATA
+        // Accendiamo l'acqua solo se superiamo i 10 gradi positivi
+        if (angolo > 10) 
+        {
+            if (!acquaEffect.isPlaying) acquaEffect.Play();
+        }
+        // Spegniamo l'acqua se scendiamo sotto gli 8 gradi.
+        // Lasciare questo "gap" tra 10 e 8 evita che l'acqua "tremi" se tieni la mano ferma al limite.
+        else if (angolo < 8) 
+        {
+            if (acquaEffect.isPlaying) acquaEffect.Stop();
+        }
+    }
 }

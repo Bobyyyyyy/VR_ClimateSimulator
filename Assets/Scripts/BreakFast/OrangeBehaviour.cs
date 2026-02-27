@@ -21,7 +21,7 @@ public class OrangeBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Knife"))
+        if (collision.gameObject.CompareTag(""))
         {
      
             Slice();

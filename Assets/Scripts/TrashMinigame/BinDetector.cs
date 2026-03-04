@@ -19,6 +19,7 @@ public class BinDetector : MonoBehaviour
             else if(collidedObject.GetComponent<TrashScript>().data.type == BinType)
             {
 
+                TrashTask.Instance.NotifyTrashInsertion();
                 // Here there will be the code to store the fact that the user decided to use the right bin
                 Destroy(collidedObject);
             }

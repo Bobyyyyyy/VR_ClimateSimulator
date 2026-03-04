@@ -68,6 +68,7 @@ public class ThermostatController : MonoBehaviour
             {
                 idleSound.Play();
                 idleSound.volume = 0;
+                idleSound.loop = true;
                 this.StartFade(idleSound,idleSound.volume, 1f, 1.5f);
             }
         }

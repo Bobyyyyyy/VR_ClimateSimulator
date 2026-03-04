@@ -7,6 +7,7 @@ public class VRLoadingOverlay : MonoBehaviour
 
     public GameObject VRPlayer;
     public GameObject LoadingScreen;
+    GameObject LoadingScreenClone;
 
     Slider loadingBar;
 
@@ -24,14 +25,14 @@ public class VRLoadingOverlay : MonoBehaviour
     private IEnumerator LoadingSequence(float duration)
     {
 
-
-        LoadingScreen = Instantiate(LoadingScreen, MainCamera.transform.position, MainCamera.transform.rotation);
-      
-        loadingBar = LoadingScreen.GetComponentInChildren<Slider>();
         MainCamera = VRPlayer.GetComponentInChildren<Camera>();
-        LoadingScreenCamera = LoadingScreen.GetComponent<Camera>();
+
+        LoadingScreenClone = Instantiate(LoadingScreen, MainCamera.transform.position, MainCamera.transform.rotation);
+      
+        loadingBar = LoadingScreenClone.GetComponentInChildren<Slider>();
+        LoadingScreenCamera = LoadingScreenClone.GetComponent<Camera>();
         
-        overlayCanvas = LoadingScreen.GetComponentInChildren<Canvas>().gameObject;
+        overlayCanvas = LoadingScreenClone.GetComponentInChildren<Canvas>().gameObject;
 
         overlayCanvas.SetActive(false);
 
@@ -39,8 +40,8 @@ public class VRLoadingOverlay : MonoBehaviour
 
         VRPlayer.SetActive(false);
         //Disable VRPlayer and set newCamera
-        LoadingScreen.tag = "MainCamera";
-        LoadingScreen.SetActive(true);
+        LoadingScreenClone.tag = "MainCamera";
+        LoadingScreenClone.SetActive(true);
         overlayCanvas.SetActive(true);
 
 
@@ -56,11 +57,11 @@ public class VRLoadingOverlay : MonoBehaviour
 
         // Loading finished: Enable VRPlayer and disable Camera
         overlayCanvas.SetActive(false);
-        LoadingScreen.SetActive(false); 
+        LoadingScreenClone.SetActive(false); 
         LoadingScreenCamera.tag = "Untagged";
         VRPlayer.SetActive(true);
 
-        Destroy(LoadingScreen);
+        Destroy(LoadingScreenClone);
         
     }
 }

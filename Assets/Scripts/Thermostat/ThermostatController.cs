@@ -15,9 +15,6 @@ public class ThermostatController : MonoBehaviour
 
     public AudioSource idleSound;
 
-
-    private Coroutine fadeCoroutine;
-
     private void SetTemperature(float temperature)
     {
         currentTemperature = temperature;
@@ -29,7 +26,6 @@ public class ThermostatController : MonoBehaviour
         }
         else
         {
-       
             PlayIdleSound(true);
             
         }
@@ -43,11 +39,13 @@ public class ThermostatController : MonoBehaviour
     public void IncreaseTemperature(float value)
     {
         SetTemperature(currentTemperature+value);
+        checkForIdealTemperature();
     }
 
     public void DecreaseTemperature(float value)
     {
         SetTemperature(currentTemperature-value);
+        checkForIdealTemperature();
     }
 
     void UpdateDisplay(float temp)
@@ -82,6 +80,13 @@ public class ThermostatController : MonoBehaviour
     
     }
 
+    void checkForIdealTemperature()
+    {
+        if (currentTemperature < idealRange[0] && currentTemperature > idealRange[1] )
+        {
+            ThermostatTask.Instance.CompleteTask();
+        }
+    }
 
     private void Start()
     {

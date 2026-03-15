@@ -3,9 +3,12 @@ using UnityEngine;
 public class TrashTask : MonoBehaviour
 {
     public static TrashTask Instance;
-    public TaskData trashTask; // Assign your ScriptableObject here
+    public TaskData trashTask;
 
-    int remainingTrash; //count the remaining trash in scene
+    /// <summary>
+    /// Counts the remaining trash in scene
+    /// </summary>
+    int remainingTrash; 
 
     void Awake() => Instance = this;
 
@@ -23,17 +26,16 @@ public class TrashTask : MonoBehaviour
         remainingTrash--;
         if (remainingTrash <= 0)
         {
-            CompleteTrashTask();
+            CompleteTask();
         }
     }
 
-    private void CompleteTrashTask()
+    private void CompleteTask()
     {
         if (trashTask != null && !trashTask.isCompleted)
         {
             trashTask.isCompleted = true;
             TaskManager.Instance.UpdateTaskProgress(trashTask);
-            Debug.Log("Trash deposited! Task Manager notified.");
         }
     }
 }

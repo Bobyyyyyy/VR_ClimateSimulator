@@ -3,35 +3,71 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class RubinettoVR : MonoBehaviour
 {
-    [Header("Trascina qui l'oggetto Acqua")]
-    public ParticleSystem acquaEffect; 
+    public enum Axis { X, Y, Z }
 
-    private HingeJoint mioHinge;
+    [Header("Acqua")]
+    public ParticleSystem acquaEffect;
+
+    [Header("Impostazioni Rotazione")]
+    public Axis rotationAxis = Axis.Z;
+
+    [Tooltip("Gradi a cui scatta quando è acceso")]
+    public float snapAngle = 90f;
+
+    [Tooltip("Velocità dell'animazione (gradi al secondo)")]
+    public float rotationSpeed = 180f;
+
+    [Header("Debug")]
+    [SerializeField] private bool isOn;
+    [SerializeField] private float currentAngle;
+
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable simpleInteractable;
+    private Quaternion baseRotation;
+    private float targetAngle;
+
+    void Awake()
+    {
+        simpleInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
+        baseRotation = transform.localRotation;
+
+        simpleInteractable.selectEntered.AddListener(OnGrab);
+    }
 
     void Start()
     {
-        mioHinge = GetComponent<HingeJoint>();
-        if(acquaEffect != null) acquaEffect.Stop();
+        if (acquaEffect != null) acquaEffect.Stop();
+    }
+
+    void OnDestroy()
+    {
+        simpleInteractable.selectEntered.RemoveListener(OnGrab);
+    }
+
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        isOn = !isOn;
+        targetAngle = isOn ? snapAngle : 0f;
+
+        // L'acqua parte/si ferma subito al grab
+        if (acquaEffect == null) return;
+        if (isOn && !acquaEffect.isPlaying) acquaEffect.Play();
+        else if (!isOn && acquaEffect.isPlaying) acquaEffect.Stop();
     }
 
     void Update()
     {
-        if (acquaEffect == null) return;
+        if (Mathf.Approximately(currentAngle, targetAngle)) return;
 
-        // Leggiamo l'angolo. NON usiamo Abs, così se va in negativo (errore fisico) l'acqua non parte.
-        float angolo = mioHinge.angle;
+        currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
 
-        // LOGICA MIGLIORATA
-        // Accendiamo l'acqua solo se superiamo i 10 gradi positivi
-        if (angolo > 10) 
+        Vector3 euler = Vector3.zero;
+        switch (rotationAxis)
         {
-            if (!acquaEffect.isPlaying) acquaEffect.Play();
+            case Axis.X: euler.x = currentAngle; break;
+            case Axis.Y: euler.y = currentAngle; break;
+            case Axis.Z: euler.z = currentAngle; break;
         }
-        // Spegniamo l'acqua se scendiamo sotto gli 8 gradi.
-        // Lasciare questo "gap" tra 10 e 8 evita che l'acqua "tremi" se tieni la mano ferma al limite.
-        else if (angolo < 8) 
-        {
-            if (acquaEffect.isPlaying) acquaEffect.Stop();
-        }
+
+        transform.localRotation = baseRotation * Quaternion.Euler(euler);
     }
 }

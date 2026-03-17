@@ -7,7 +7,7 @@ public class ThermostatTask : MonoBehaviour
 
     public TaskData task;
 
-    
+        void Awake() => Instance = this;
 
     public void CompleteTask()
         {

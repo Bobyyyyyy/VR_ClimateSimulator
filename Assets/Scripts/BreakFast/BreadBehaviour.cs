@@ -30,6 +30,7 @@ public class BreadSliceVR : MonoBehaviour
     {
         hasJam = true;
         if (jamDecal != null) jamDecal.SetActive(true);
-        //chiamare breakfast manager
+        BreakfastTask.Instance.CompleteStep(1);
+        Destroy(this);
     }
 }

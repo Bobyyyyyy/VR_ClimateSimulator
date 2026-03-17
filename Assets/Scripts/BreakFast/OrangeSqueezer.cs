@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -7,7 +8,6 @@ public class OrangeSqueezer : MonoBehaviour
     public float requiredSqueezeTime = 2.0f;
     private float currentSqueezeTime = 0f;
 
-    // Sostituisci l'intero metodo OnTriggerEnter con questi due:
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Orange"))
@@ -24,7 +24,11 @@ public class OrangeSqueezer : MonoBehaviour
                 {
                     requiredOranges--;
                     collision.gameObject.SetActive(false); 
-                    currentSqueezeTime = 0f; 
+                    currentSqueezeTime = 0f;
+                    if(requiredOranges == 0)
+                    {
+                        BreakfastTask.Instance.CompleteStep(0);
+                    }
                 }
             }
         }

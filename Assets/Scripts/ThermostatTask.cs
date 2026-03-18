@@ -15,6 +15,7 @@ public class ThermostatTask : MonoBehaviour
         {
             task.isCompleted = true;
             TaskManager.Instance.UpdateTaskProgress(task);
+            Destroy(this);
         }
     }
 }

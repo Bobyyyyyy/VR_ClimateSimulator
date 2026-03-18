@@ -36,6 +36,7 @@ public class TrashTask : MonoBehaviour
         {
             trashTask.isCompleted = true;
             TaskManager.Instance.UpdateTaskProgress(trashTask);
+            Destroy(this);
         }
     }
 }

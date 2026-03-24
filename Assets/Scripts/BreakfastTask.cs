@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Filtering;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class BreakfastTask : MonoBehaviour
 {
@@ -20,8 +22,17 @@ public class BreakfastTask : MonoBehaviour
     {
         // In questa funzione andrà messa la logica per far partire la task, come se fosse un minigame,
         // con apposito tracker per vedere a che step sono e per dire cosa fare.
-        // utilizzare una scena diversa? voglio fare in modo che l'utente si ritrovi davanti a ciò che deve fare
     }
+
+
+    [ContextMenu("Test Step 0")]
+    void TestStep0() { CompleteStep(0); }
+
+    [ContextMenu("Test Step 1")]
+    void TestStep1() { CompleteStep(1); }
+
+    [ContextMenu("Test Step 2")]
+    void TestStep2() { CompleteStep(2); }
 
     public void CompleteStep(int step)
     {
@@ -29,7 +40,12 @@ public class BreakfastTask : MonoBehaviour
             case 0:
                 if(this.step == 0)
                 {
-                     //Spremuta
+                     //rendo la tazza grabbabile
+                     GameObject Mug = prefabs.Find(g => g.name == "Mug");
+
+                     Mug.AddComponent<Rigidbody>();
+                     Mug.AddComponent<XRGrabInteractable>();
+
                 }
             break;
             case 1:

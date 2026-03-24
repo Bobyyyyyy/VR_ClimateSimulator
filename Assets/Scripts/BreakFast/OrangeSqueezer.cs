@@ -6,34 +6,36 @@ public class OrangeSqueezer : MonoBehaviour
 {
     public bool isSqueezing = false;
     public int requiredOranges = 3;
-    public float requiredSqueezeTime = 5.0f;
-    private float currentSqueezeTime = 0f;
     public float requiredJuiceTime = 15f;
     private float maxJuiceHeight = 0.05f;
-
-    private float juiceFlowSpeed = 0.02f;
-
+    private float juiceFlowSpeed;
+    private float juicePerOrange;
+    private float currentOrangeJuice = 0f;
 
     public GameObject juiceFlow;
     
     public GameObject mugLiquid;
 
 
+
     void Start()
     {
-        juiceFlowSpeed = maxJuiceHeight / requiredJuiceTime;  
-
+        juiceFlowSpeed = maxJuiceHeight / requiredJuiceTime;
+        juicePerOrange = maxJuiceHeight / requiredOranges;
     }
 
     void Update()
     {
-        if (isSqueezing)
+        if (isSqueezing && mugLiquid.transform.localPosition.z <= maxJuiceHeight && currentOrangeJuice < juicePerOrange)
         {
+
             if(juiceFlow != null) juiceFlow.SetActive(true);
 
             if(mugLiquid != null) mugLiquid.SetActive(true);
 
-            mugLiquid.transform.localPosition += new Vector3(0,0, juiceFlowSpeed * Time.deltaTime);
+            float delta = juiceFlowSpeed * Time.deltaTime;
+            currentOrangeJuice += delta;
+            mugLiquid.transform.localPosition += new Vector3(0,0, delta);
 
             if(mugLiquid.transform.localPosition.z >= maxJuiceHeight)
             {
@@ -46,27 +48,28 @@ public class OrangeSqueezer : MonoBehaviour
         {
             if(juiceFlow != null) juiceFlow.SetActive(false);
         }
+
+        //fix flusso non arriva alla maxheight
+
     }
 
-    private void OnCollisionStay(Collision collision)
+    void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Orange"))
+         if (other.gameObject.CompareTag("Fruit"))
         {
-            XRGrabInteractable grabInteractable = collision.gameObject.GetComponent<XRGrabInteractable>();
+            XRGrabInteractable grabInteractable = other.gameObject.GetComponent<XRGrabInteractable>();
             
-            if (grabInteractable != null && grabInteractable.isSelected)
+            if (grabInteractable != null && grabInteractable.isSelected && mugLiquid.transform.localPosition.z <= maxJuiceHeight )
             {
                 isSqueezing = true;
-                currentSqueezeTime += Time.deltaTime;
-                Debug.Log($"Spremitura in corso... {currentSqueezeTime:F1}/{requiredSqueezeTime} sec");
 
-                if (currentSqueezeTime >= requiredSqueezeTime)
+                if (currentOrangeJuice >= juicePerOrange)
                 {
                     isSqueezing = false;
                     requiredOranges--;
-                    collision.gameObject.SetActive(false); 
-                    currentSqueezeTime = 0f;
-                    if(requiredOranges == 0)
+                    Destroy(other.gameObject);
+                    currentOrangeJuice = 0f;
+                    if (requiredOranges == 0)
                     {
                         BreakfastTask.Instance.CompleteStep(0);
                     }
@@ -74,6 +77,12 @@ public class OrangeSqueezer : MonoBehaviour
             }
         }
     }
+    void OnTriggerExit(Collider other)
+    {
+        isSqueezing = false;
+        Debug.Log($"Spremitura fermata"); 
+    }
+
 
 
 

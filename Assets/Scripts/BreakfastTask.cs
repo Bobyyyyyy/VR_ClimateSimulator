@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,9 @@ public class BreakfastTask : MonoBehaviour
 {
    
     public static BreakfastTask Instance;
+
+    public List<GameObject> prefabs;
+     
 
     public TaskData task;
 

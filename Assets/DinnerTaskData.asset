@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
   taskName: Prepara la cena
   description: 
-  isCompleted: 0
+  isCompleted: 1

@@ -2836,6 +2836,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.011999997, y: 0.036000013, z: 0.120000124}
   m_Center: {x: 0.17723086, y: -1.056199, z: 0.5593034}
+--- !u!1 &303352919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 303352921}
+  - component: {fileID: 303352920}
+  m_Layer: 0
+  m_Name: TaskManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &303352920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303352919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3808ebe55f8804dc9adf8b34e4162ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskManager
+  activeTasks:
+  - {fileID: 11400000, guid: 80902b9d2efdb4a63adffd9c3391adf6, type: 2}
+  completedTasks: 0
+--- !u!4 &303352921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303352919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.80869, y: 1.11353, z: 5.71554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &304011096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12266,6 +12313,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.032152362, y: 0.15592861, z: 0.06515171}
   m_Center: {x: -0.000000024214392, y: -0.06083937, z: 0.005753824}
+--- !u!1 &709717785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 709717787}
+  - component: {fileID: 709717786}
+  m_Layer: 0
+  m_Name: DinnerTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &709717786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709717785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75090a0823b9498fb0b754887ac43fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DinnerTask
+  dinnerTask: {fileID: 11400000, guid: 80902b9d2efdb4a63adffd9c3391adf6, type: 2}
+  burgerSocket: {fileID: 1256255765}
+  eggSocket: {fileID: 155503222}
+--- !u!4 &709717787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709717785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.80869, y: 1.11353, z: 5.71554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715841935
 GameObject:
   m_ObjectHideFlags: 0
@@ -43017,7 +43111,7 @@ MonoBehaviour:
     rawMaterial: {fileID: 2100000, guid: 7c46d21f348c35f4f9e027e0aa456787, type: 2}
     cookedMaterial: {fileID: 2100000, guid: c78cb956bf38a644e817c10bf6640753, type: 2}
     burntMaterial: {fileID: 2100000, guid: 7ed44545ffe01fc4ea2208b01ed3d689, type: 2}
-  rawPrefab: {fileID: 0}
+  rawPrefab: {fileID: 919132149576045664}
   spawnPoint: {fileID: 0}
   respawnDelay: 2
   currentCookTime: 0
@@ -46049,3 +46143,5 @@ SceneRoots:
   - {fileID: 363309163}
   - {fileID: 1467639904}
   - {fileID: 666608881}
+  - {fileID: 709717787}
+  - {fileID: 303352921}

@@ -21,23 +21,39 @@ public class CookableFood : MonoBehaviour
     [Header("Parti del Cibo e Materiali")]
     public FoodPart[] foodParts;
 
+    [Header("Respawn quando bruciato")]
+    [Tooltip("Prefab dell'oggetto crudo da spawnare (può essere lo stesso prefab)")]
+    public GameObject rawPrefab;
+    [Tooltip("Punto dove spawna il nuovo oggetto crudo")]
+    public Transform spawnPoint;
+    [Tooltip("Secondi dopo il bruciato prima di spawnare il nuovo")]
+    public float respawnDelay = 2f;
+
     [Header("Debug (Solo per visualizzare)")]
     [SerializeField] private float currentCookTime = 0f;
     [SerializeField] private bool isInPan = false;
     [SerializeField] private bool isActuallyCooking = false;
 
     private CookState currentState = CookState.Raw;
-
     private Pan currentPan;
+    private bool hasRespawned = false;
 
     void Start()
     {
         SetStateMaterials(CookState.Raw);
+
+        // Se non hai assegnato uno spawn point, salva la posizione iniziale
+        if (spawnPoint == null)
+        {
+            GameObject sp = new GameObject($"SpawnPoint_{gameObject.name}");
+            sp.transform.position = transform.position;
+            sp.transform.rotation = transform.rotation;
+            spawnPoint = sp.transform;
+        }
     }
 
     void Update()
     {
-        // Cuoce SOLO se: è in padella + la padella è su un fornello acceso
         bool panIsHot = currentPan != null && currentPan.IsHot;
         isActuallyCooking = isInPan && panIsHot && currentState != CookState.Burnt;
 
@@ -57,7 +73,34 @@ public class CookableFood : MonoBehaviour
             currentState = CookState.Burnt;
             SetStateMaterials(CookState.Burnt);
             Debug.Log("Tutto il cibo è BRUCIATO!");
+
+            // Spawna un nuovo oggetto crudo dopo un delay
+            if (!hasRespawned && rawPrefab != null)
+            {
+                hasRespawned = true;
+                Invoke(nameof(SpawnNewRaw), respawnDelay);
+            }
         }
+    }
+
+    private void SpawnNewRaw()
+    {
+        GameObject newFood = Instantiate(rawPrefab, spawnPoint.position, spawnPoint.rotation);
+        
+        // Il nuovo oggetto avrà il suo CookableFood già configurato dal prefab
+        // Assegna lo stesso spawn point così anche il prossimo respawna lì
+        CookableFood newCookable = newFood.GetComponent<CookableFood>();
+        if (newCookable != null)
+        {
+            newCookable.spawnPoint = spawnPoint;
+            newCookable.currentCookTime = 0f;
+            newCookable.currentState = CookState.Raw;
+            newCookable.isInPan = false;
+            newCookable.isActuallyCooking = false;
+            newCookable.hasRespawned = false;
+        }
+
+        Debug.Log($"Nuovo {rawPrefab.name} crudo spawnato in {spawnPoint.position}!");
     }
 
     private void OnTriggerEnter(Collider other)

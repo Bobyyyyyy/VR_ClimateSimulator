@@ -38,6 +38,10 @@ public class CookableFood : MonoBehaviour
     private Pan currentPan;
     private bool hasRespawned = false;
 
+    // Proprietà pubbliche per DinnerTask
+    public bool IsCooked => currentState == CookState.Cooked;
+    public bool IsBurnt => currentState == CookState.Burnt;
+
     void Start()
     {
         SetStateMaterials(CookState.Raw);

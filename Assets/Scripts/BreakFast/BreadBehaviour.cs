@@ -2,35 +2,45 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 
-public class BreadSliceVR : MonoBehaviour
+public class BreadBehaviour : MonoBehaviour
 {
     public GameObject jamDecal; 
-    private bool hasJam = false;
+
+    public int spreads = 4;
+    private int currentSpreads = 0;
+
+    public Vector3 initialScale;
+    public Vector3 finalScale;
 
     private void Start()
     {
         if (jamDecal != null) jamDecal.SetActive(false);
+        finalScale = jamDecal.transform.localScale;
+        initialScale = finalScale / spreads;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    [ContextMenu("Apply Jam")]
+    public void ApplyJam()
     {
-        if (!hasJam && collision.gameObject.CompareTag("Knife"))
+         if (currentSpreads == 0 && jamDecal != null)
         {
-            XRGrabInteractable grabInteractable = collision.gameObject.GetComponent<XRGrabInteractable>();
+            jamDecal.transform.localScale = initialScale;
+            jamDecal.SetActive(true);
+        }
+
+        if (currentSpreads < spreads)
+        {
+            currentSpreads++;
+            float progresso = (float)currentSpreads / spreads;
             
-            // Verifica che il coltello sia impugnato
-            if (grabInteractable != null && grabInteractable.isSelected)
+            if (jamDecal != null)
             {
-                ApplyJam();
+                jamDecal.transform.localScale = Vector3.Lerp(initialScale, finalScale, progresso);
             }
         }
-    }
-
-    private void ApplyJam()
-    {
-        hasJam = true;
-        if (jamDecal != null) jamDecal.SetActive(true);
+        /*
         BreakfastTask.Instance.CompleteStep(1);
         Destroy(this);
+        */  
     }
 }

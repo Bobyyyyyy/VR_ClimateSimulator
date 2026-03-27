@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class BreakfastTask : MonoBehaviour
+    public class BreakfastTask : MonoBehaviour
 {
    
     public static BreakfastTask Instance;
@@ -40,12 +40,10 @@ public class BreakfastTask : MonoBehaviour
             case 0:
                 if(this.step == 0)
                 {
-                     //rendo la tazza grabbabile
                      GameObject Mug = prefabs.Find(g => g.name == "Mug");
 
                      Mug.AddComponent<Rigidbody>();
                      Mug.AddComponent<XRGrabInteractable>();
-
                 }
             break;
             case 1:

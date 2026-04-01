@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5890772808571731136}
   m_Layer: 0
   m_Name: Pizza
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,14 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3376497741812948686}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7020655, y: -0.08428546, z: 0.08428546, w: 0.70206547}
+  m_LocalRotation: {x: 0.7020652, y: -0.084287934, z: 0.084287934, w: 0.7020652}
   m_LocalPosition: {x: 3.6288226, y: 0.097866006, z: -2.3262784}
-  m_LocalScale: {x: 0.01297297, y: 0.01297297, z: 0.0129729705}
+  m_LocalScale: {x: 0.008271694, y: 0.008271695, z: 0.008271696}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6902725651529812973}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 13.692}
 --- !u!1 &5768107998950852171
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6902725651529812973}
   - component: {fileID: 6533324848371396885}
   - component: {fileID: 2442153831592707082}
+  - component: {fileID: 7528053696088327908}
   m_Layer: 0
   m_Name: Object_150
   m_TagString: Untagged
@@ -122,3 +123,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7528053696088327908
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5768107998950852171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5350862705377055440, guid: 2a860699d1035c97c9dda52d6e25e7ce, type: 3}

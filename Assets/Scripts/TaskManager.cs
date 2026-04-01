@@ -17,7 +17,6 @@ public class TaskManager : MonoBehaviour
         return points;
     }
 
-
     /// <summary>
     /// Checks if the current task is in the activeTasks and needs to be updated, if it is the function updates the completed status of the task.
     /// </summary>
@@ -39,7 +38,6 @@ public class TaskManager : MonoBehaviour
 
         CheckTasksStatus();
     }
-
 
 
     void CheckTasksStatus()

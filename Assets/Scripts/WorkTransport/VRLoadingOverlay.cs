@@ -13,8 +13,6 @@ public class VRLoadingOverlay : MonoBehaviour
 
     Camera MainCamera;    
     Camera LoadingScreenCamera;
-
-    [Header("UI Elements")]
     GameObject overlayCanvas;
 
     [ContextMenu("BusTravel")]

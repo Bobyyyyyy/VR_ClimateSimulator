@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TrashTask : MonoBehaviour
 {
     public static TrashTask Instance;
     public TaskData trashTask;
+    public List<GameObject> prefabs;
+     
 
     /// <summary>
     /// Counts the remaining trash in scene
@@ -12,14 +15,16 @@ public class TrashTask : MonoBehaviour
 
     void Awake() => Instance = this;
 
-    //voglio che la spazzatura non sia sempre nello stesso posto, idea possibile: creare prefab in cui la spazzatura è in posti diversi e creare un rng
-    //che sceglie un prefab a caso tra quelli disponibili.
-
-    void Start()
+    
+    [ContextMenu("Test begin task")]
+    public void beginTask()
     {
+        foreach (var prefab in prefabs) {
+            Instantiate(prefab);
+        }
         remainingTrash = GameObject.FindGameObjectsWithTag("Trash").Length;
-        Debug.Log(remainingTrash);
     }
+
 
     public void NotifyTrashInsertion()
     {

@@ -17,6 +17,7 @@ public class BreadBehaviour : MonoBehaviour
         if (jamDecal != null) jamDecal.SetActive(false);
         finalScale = jamDecal.transform.localScale;
         initialScale = finalScale / spreads;
+        
     }
 
     [ContextMenu("Apply Jam")]
@@ -38,9 +39,8 @@ public class BreadBehaviour : MonoBehaviour
                 jamDecal.transform.localScale = Vector3.Lerp(initialScale, finalScale, progresso);
             }
         }
-        /*
-        BreakfastTask.Instance.CompleteStep(1);
-        Destroy(this);
-        */  
+        else {
+            BreakfastTask.Instance.CompleteStep(1);  
+        }
     }
 }

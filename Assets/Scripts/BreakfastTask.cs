@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+    using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
@@ -18,11 +18,15 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
     private int step = 0;
 
-    void beginTask()
+
+    [ContextMenu("Test begin task")]
+    public void beginTask()
     {
-        // In questa funzione andrà messa la logica per far partire la task, come se fosse un minigame,
-        // con apposito tracker per vedere a che step sono e per dire cosa fare.
+        foreach (var prefab in prefabs) {
+            Instantiate(prefab);
+        }
     }
+
 
 
     [ContextMenu("Test Step 0")]
@@ -49,14 +53,17 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
             case 1:
                 if(this.step == 1)
                 {
-                     //Spalmare marmellata sul toast 
+                    GameObject Toast = prefabs.Find(g => g.name == "Toast");
+
+                     Toast.AddComponent<Rigidbody>();
+                     Toast.AddComponent<XRGrabInteractable>(); 
                 }
               
             break;
             case 2:
                 if(this.step == 2)
                 {
-                       // Mangiare
+                    CompleteTask();
                 }
              
             break;

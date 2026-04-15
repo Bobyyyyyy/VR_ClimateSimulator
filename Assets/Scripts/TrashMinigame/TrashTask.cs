@@ -15,8 +15,12 @@ public class TrashTask : MonoBehaviour
 
     void Awake() => Instance = this;
 
-    
-    [ContextMenu("Test begin task")]
+
+    void Start()
+    {
+        beginTask();
+    }
+
     public void beginTask()
     {
         foreach (var prefab in prefabs) {

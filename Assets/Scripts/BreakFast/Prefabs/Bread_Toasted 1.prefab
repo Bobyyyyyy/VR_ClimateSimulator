@@ -313,6 +313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreadSliceVR
   jamDecal: {fileID: 1917878263208791107}
+  spreads: 4
+  initialScale: {x: 0, y: 0, z: 0}
+  finalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &3672073340033983478
 GameObject:
   m_ObjectHideFlags: 0

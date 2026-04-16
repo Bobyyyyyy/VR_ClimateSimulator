@@ -18,7 +18,7 @@ public class VRLoadingOverlay : MonoBehaviour
     [ContextMenu("BusTravel")]
     public void StartBusTravel() => StartCoroutine(LoadingSequence(15f));
     [ContextMenu("TaxiTravel")]
-    public void StartTaxiTravel() => StartCoroutine(LoadingSequence(2f));
+    public void StartCarTravel() => StartCoroutine(LoadingSequence(2f));
 
     private IEnumerator LoadingSequence(float duration)
     {

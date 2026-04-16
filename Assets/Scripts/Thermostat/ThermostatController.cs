@@ -12,6 +12,9 @@ public class ThermostatController : MonoBehaviour
     float targetTemperature = 19f;
     public Vector2 idealRange;
     public float currentTemperature;
+    
+    float minTemp = 0;
+    float maxTemp = 60;
 
     public AudioSource idleSound;
 
@@ -38,19 +41,27 @@ public class ThermostatController : MonoBehaviour
 
     public void IncreaseTemperature(float value)
     {
-        SetTemperature(currentTemperature+value);
-        checkForIdealTemperature();
+        if(currentTemperature + value > maxTemp )
+        {
+            SetTemperature(currentTemperature+value);
+            checkForIdealTemperature(); 
+        }
+
     }
 
     public void DecreaseTemperature(float value)
     {
-        SetTemperature(currentTemperature-value);
-        checkForIdealTemperature();
+        if ( currentTemperature - value < minTemp )
+        {
+            SetTemperature(currentTemperature-value);
+            checkForIdealTemperature();   
+        }
+
     }
 
     void UpdateDisplay(float temp)
     {
-        displayScreen.text = temp.ToString("F1") + "�C";
+        displayScreen.text = temp.ToString("F1") + "C";
     }
 
     public void SetTargetTemperature(float temp)

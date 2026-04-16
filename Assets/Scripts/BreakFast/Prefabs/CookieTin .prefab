@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4971741873483825172}
   m_Layer: 0
   m_Name: biscuit_biscuit1MAT_04_biscuit1_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 1637241683968052609}
   m_Layer: 0
   m_Name: biscuit_biscuit1MAT_05_biscuit1_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 3753229952179572717}
   m_Layer: 0
   m_Name: biscuit_biscuit6MAT_05_biscuit6_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 1182160006954813748}
   m_Layer: 0
   m_Name: biscuit_biscuit5MAT_03_biscuit5_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 5439435326905704538}
   m_Layer: 0
   m_Name: biscuit_biscuit5MAT_02_biscuit5_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1366,7 +1366,7 @@ GameObject:
   - component: {fileID: 8601287454600813741}
   m_Layer: 0
   m_Name: biscuit_biscuit3MAT_04_biscuit3_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 4819210723832037003}
   m_Layer: 0
   m_Name: biscuit_biscuit1MAT_03_biscuit1_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1906,7 +1906,7 @@ GameObject:
   - component: {fileID: 7791771561381222792}
   m_Layer: 0
   m_Name: biscuit_biscuit6MAT_03_biscuit6_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2176,7 +2176,7 @@ GameObject:
   - component: {fileID: 1519996141122130699}
   m_Layer: 0
   m_Name: biscuit_biscuit6MAT_04_biscuit6_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2446,7 +2446,7 @@ GameObject:
   - component: {fileID: 8863159545923822985}
   m_Layer: 0
   m_Name: biscuit_biscuit6MAT_02_biscuit6_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2716,7 +2716,7 @@ GameObject:
   - component: {fileID: 1097432949446325395}
   m_Layer: 0
   m_Name: biscuit_biscuit4MAT_05_biscuit4_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3195,7 +3195,7 @@ GameObject:
   - component: {fileID: 4532987934482792871}
   m_Layer: 0
   m_Name: biscuit_biscuit4MAT_03_biscuit4_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3465,7 +3465,7 @@ GameObject:
   - component: {fileID: 5397252667743051262}
   m_Layer: 0
   m_Name: biscuit_biscuit3MAT_02_biscuit3_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3913,7 +3913,7 @@ GameObject:
   - component: {fileID: 6780960143659803314}
   m_Layer: 0
   m_Name: biscuit_biscuit2MAT_03_biscuit2_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4183,7 +4183,7 @@ GameObject:
   - component: {fileID: 7606149867448415226}
   m_Layer: 0
   m_Name: biscuit_biscuit2MAT_05_biscuit2_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4510,7 +4510,7 @@ GameObject:
   - component: {fileID: 429840635704524058}
   m_Layer: 0
   m_Name: biscuit_biscuit4MAT_02_biscuit4_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4780,7 +4780,7 @@ GameObject:
   - component: {fileID: 3008112148989941439}
   m_Layer: 0
   m_Name: biscuit_biscuit5MAT_03.001_biscuit5_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5050,7 +5050,7 @@ GameObject:
   - component: {fileID: 5293261380614757231}
   m_Layer: 0
   m_Name: biscuit_biscuit2MAT_02_biscuit2_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5320,7 +5320,7 @@ GameObject:
   - component: {fileID: 3785664766533444693}
   m_Layer: 0
   m_Name: biscuit_biscuit2MAT_04_biscuit2_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5590,7 +5590,7 @@ GameObject:
   - component: {fileID: 5218733021696366559}
   m_Layer: 0
   m_Name: biscuit_biscuit3MAT_03_biscuit3_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5860,7 +5860,7 @@ GameObject:
   - component: {fileID: 6104803349257325393}
   m_Layer: 0
   m_Name: biscuit_biscuit4MAT_04_biscuit4_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6130,7 +6130,7 @@ GameObject:
   - component: {fileID: 8398934245399545176}
   m_Layer: 0
   m_Name: biscuit_biscuit1MAT_02_biscuit1_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6400,7 +6400,7 @@ GameObject:
   - component: {fileID: 5870507791540401032}
   m_Layer: 0
   m_Name: biscuit_biscuit3MAT_05_biscuit3_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6670,7 +6670,7 @@ GameObject:
   - component: {fileID: 1122640525539733145}
   m_Layer: 0
   m_Name: biscuit_biscuit5MAT_05_biscuit5_0
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

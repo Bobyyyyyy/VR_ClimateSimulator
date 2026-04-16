@@ -64,6 +64,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
                      Mug.AddComponent<Rigidbody>();
                      Mug.AddComponent<XRGrabInteractable>();
+                     Mug.tag = "Beverage";
                 }
             break;
             case 1:
@@ -72,7 +73,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
                     GameObject Toast = BreakFastPrefabs.Find(g => g.name == "Toast");
 
                      Toast.AddComponent<Rigidbody>();
-                     Toast.AddComponent<XRGrabInteractable>(); 
+                     Toast.AddComponent<XRGrabInteractable>();
+                     Toast.tag = "Food"; 
                 }
               
             break;

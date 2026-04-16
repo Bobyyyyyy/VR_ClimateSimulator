@@ -78,8 +78,10 @@ public class OrangeSqueezer : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        isSqueezing = false;
-        Debug.Log($"Spremitura fermata"); 
+        if(isSqueezing) {
+            isSqueezing = false;
+            Debug.Log($"Spremitura fermata");
+        } 
     }
 
 

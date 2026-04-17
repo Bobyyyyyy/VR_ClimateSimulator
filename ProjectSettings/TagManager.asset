@@ -8,6 +8,8 @@ TagManager:
   - Food
   - Beverage
   - Fruit
+  - SinkTrigger
+  - Pan
   layers:
   - Default
   - TransparentFX

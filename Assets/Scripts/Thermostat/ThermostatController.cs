@@ -12,11 +12,11 @@ public class ThermostatController : MonoBehaviour
     float targetTemperature = 19f;
     public Vector2 idealRange;
     public float currentTemperature;
+    
+    float minTemp = 0;
+    float maxTemp = 60;
 
     public AudioSource idleSound;
-
-
-    private Coroutine fadeCoroutine;
 
     private void SetTemperature(float temperature)
     {
@@ -29,7 +29,6 @@ public class ThermostatController : MonoBehaviour
         }
         else
         {
-       
             PlayIdleSound(true);
             
         }
@@ -42,17 +41,27 @@ public class ThermostatController : MonoBehaviour
 
     public void IncreaseTemperature(float value)
     {
-        SetTemperature(currentTemperature+value);
+        if(currentTemperature + value > maxTemp )
+        {
+            SetTemperature(currentTemperature+value);
+            checkForIdealTemperature(); 
+        }
+
     }
 
     public void DecreaseTemperature(float value)
     {
-        SetTemperature(currentTemperature-value);
+        if ( currentTemperature - value < minTemp )
+        {
+            SetTemperature(currentTemperature-value);
+            checkForIdealTemperature();   
+        }
+
     }
 
     void UpdateDisplay(float temp)
     {
-        displayScreen.text = temp.ToString("F1") + "�C";
+        displayScreen.text = temp.ToString("F1") + "C";
     }
 
     public void SetTargetTemperature(float temp)
@@ -68,6 +77,7 @@ public class ThermostatController : MonoBehaviour
             {
                 idleSound.Play();
                 idleSound.volume = 0;
+                idleSound.loop = true;
                 this.StartFade(idleSound,idleSound.volume, 1f, 1.5f);
             }
         }
@@ -81,6 +91,13 @@ public class ThermostatController : MonoBehaviour
     
     }
 
+    void checkForIdealTemperature()
+    {
+        if (currentTemperature < idealRange[0] && currentTemperature > idealRange[1] )
+        {
+            ThermostatTask.Instance.CompleteTask();
+        }
+    }
 
     private void Start()
     {

@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: db91d901319feb244925945df77cecdb
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\3D\snack_collections\scene.bin
+    assetPath: Assets\3D\snack_collections\scene.bin
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\material_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\material_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\material_1_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\material_1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\material_2_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\material_2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\material_4_baseColor.png
+    assetPath: Assets\3D\snack_collections\textures\material_4_baseColor.png
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Club_Cracker_Box_Sides_Texture_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Club_Cracker_Box_Sides_Texture_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Club_Cracker_Box_front_Texture_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Club_Cracker_Box_front_Texture_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A04_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A04_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_007s_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_007s_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A02b_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A02b_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_002c_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_002c_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A17c_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A17c_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A13_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A13_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A20_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A20_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_002_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_002_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A081_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A081_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_006c_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_006c_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L07_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L07_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_K23_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_K23_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L08_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L08_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L03s_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L03s_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_K17_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_K17_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L10_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L10_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L04f_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L04f_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_K231_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_K231_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_K171h_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_K171h_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L04e_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L04e_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_K232f_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_K232f_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_K18g_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_K18g_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_L101d_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_L101d_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I02_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I02_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I13b_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I13b_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I13_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I13_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I07_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I07_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I021_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I021_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I14_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I14_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I131d_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I131d_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_I08d_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_I08d_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A082_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A082_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_B06_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_B06_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_B10_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_B10_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_B18_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_B18_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A23_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A23_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_B12_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_B12_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A18_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A18_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_B17v_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_B17v_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Combos_Tuna_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Combos_Tuna_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Combos_Nacho_Cheese_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Combos_Nacho_Cheese_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Combos_Cheese_Bag_Scan_Back_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Combos_Cheese_Bag_Scan_Back_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Combos_Fruit_Stripe_Gum_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Combos_Fruit_Stripe_Gum_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\material_53_baseColor.png
+    assetPath: Assets\3D\snack_collections\textures\material_53_baseColor.png
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A08_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\Color_A08_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\Color_A05_baseColor.png
+    assetPath: Assets\3D\snack_collections\textures\Color_A05_baseColor.png
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\escanear0001_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\escanear0001_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\escanear0003_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\escanear0003_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\escanear0004_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\escanear0004_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\escanear0002_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\escanear0002_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\escanear0005_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\escanear0005_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\3D\snack_collections\textures\material_63_baseColor.jpeg
+    assetPath: Assets\3D\snack_collections\textures\material_63_baseColor.jpeg
+  reportItems: []

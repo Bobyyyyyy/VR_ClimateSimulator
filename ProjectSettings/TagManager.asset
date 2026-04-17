@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Trash
+  - Food
+  - Beverage
+  - Fruit
   - SinkTrigger
   - Pan
   layers:
@@ -53,3 +56,4 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
+  m_MigratedRenderPipelines: []

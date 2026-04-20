@@ -16,10 +16,6 @@ public class TrashTask : MonoBehaviour
     void Awake() => Instance = this;
 
 
-    void Start()
-    {
-        beginTask();
-    }
 
     public void beginTask()
     {

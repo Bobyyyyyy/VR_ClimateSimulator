@@ -41,7 +41,7 @@ public class ThermostatController : MonoBehaviour
 
     public void IncreaseTemperature(float value)
     {
-        if(currentTemperature + value > maxTemp )
+        if(currentTemperature + value < maxTemp )
         {
             SetTemperature(currentTemperature+value);
             checkForIdealTemperature(); 
@@ -51,7 +51,7 @@ public class ThermostatController : MonoBehaviour
 
     public void DecreaseTemperature(float value)
     {
-        if ( currentTemperature - value < minTemp )
+        if (currentTemperature - value > minTemp )
         {
             SetTemperature(currentTemperature-value);
             checkForIdealTemperature();   

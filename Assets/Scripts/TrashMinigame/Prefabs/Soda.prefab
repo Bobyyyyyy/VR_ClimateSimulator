@@ -99,9 +99,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8203698425431623894}
-  - component: {fileID: 9010755646286376133}
   - component: {fileID: 8569561095166490108}
   - component: {fileID: 4913453942502800171}
+  - component: {fileID: 2114858635557399563}
   m_Layer: 0
   m_Name: Soda
   m_TagString: Trash
@@ -126,29 +126,6 @@ Transform:
   - {fileID: 4638375370026962762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -0.173}
---- !u!136 &9010755646286376133
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336262599299898494}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1849957
-  m_Height: 0.62089854
-  m_Direction: 1
-  m_Center: {x: 0.0046305303, y: 0.001817135, z: -3.1346608e-17}
 --- !u!54 &8569561095166490108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -305,6 +282,27 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!65 &2114858635557399563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336262599299898494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.36686018, y: 0.5539256, z: 0.3409371}
+  m_Center: {x: 0.0062160473, y: 0.017984357, z: -0.013258967}
 --- !u!1 &6596520257233669813
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,8 +39,5 @@ public class BreadBehaviour : MonoBehaviour
                 jamDecal.transform.localScale = Vector3.Lerp(initialScale, finalScale, progresso);
             }
         }
-        else {
-            BreakfastTask.Instance.CompleteStep(1);  
-        }
     }
 }

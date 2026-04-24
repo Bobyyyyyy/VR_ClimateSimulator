@@ -70,7 +70,7 @@ public class OrangeSqueezer : MonoBehaviour
                     currentOrangeJuice = 0f;
                     if (requiredOranges == 0)
                     {
-                        BreakfastTask.Instance.CompleteStep(0);
+                        BreakfastTask.Instance.FinishJuice();
                     }
                 }
             }

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ringbell
+* source:	https://sketchfab.com/3d-models/ringbell-60a54db840794904b6614912e1b95818
+* author:	Giuliano (https://sketchfab.com/giuliano139)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ringbell" (https://sketchfab.com/3d-models/ringbell-60a54db840794904b6614912e1b95818) by Giuliano (https://sketchfab.com/giuliano139) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,102 +1,169 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-    public class BreakfastTask : MonoBehaviour
+public class BreakfastTask : MonoBehaviour
 {
-   
     public static BreakfastTask Instance;
 
-    public List<GameObject> BreakFastPrefabs;
+    public GameObject JuiceStation;
+    public GameObject ToastStation;
     public List<GameObject> SnackPrefabs;
-
     public GameObject BreakfastCanvas;
-
-     
-
     public TaskData task;
+
+    private List<GameObject> instantiatedObjects = new List<GameObject>();
+    private GameObject currentStation;
+    private bool isHealthy;
+    private int step = 0;
+    private bool[] stepFlags = new bool[2];
 
     void Awake() => Instance = this;
 
-    private int step = 0;
+    public bool IsCurrentStepReady() => stepFlags[step];
 
+    [ContextMenu("Test Completion Step")]
+    public void TryCompleteCurrentStep()
+    {   
+        Debug.Log(step);
+        Debug.Log(IsCurrentStepReady());
+        if (IsCurrentStepReady())
+            CompleteStep(step);
+    }
 
-    [ContextMenu("Test begin task")]
-    public void beginTask(bool isHealthy)
+    [ContextMenu("Start Task")]
+    public void BeginTask()
     {
-        if(isHealthy)
+        isHealthy = true;
+
+        if (isHealthy)
         {
-            foreach (var prefab in BreakFastPrefabs) {
-                Instantiate(prefab);
-            }
+            currentStation = Instantiate(JuiceStation);
+            instantiatedObjects.Add(currentStation);
         }
         else
         {
-            foreach (var prefab in SnackPrefabs) {
-                Instantiate(prefab);
-            }
+            foreach (var prefab in SnackPrefabs)
+                instantiatedObjects.Add(Instantiate(prefab));
         }
 
         Destroy(BreakfastCanvas);
-       
     }
 
+    private GameObject FindChildInInstances(string objectName)
+    {
+        foreach (var instance in instantiatedObjects)
+        {
+            if (instance == null) continue;
+            Transform[] allChildren = instance.GetComponentsInChildren<Transform>(true);
+            Transform found = System.Array.Find(allChildren, t => t.name == objectName);
+            if (found != null) return found.gameObject;
+        }
+        return null;
+    }
 
+    [ContextMenu("Set Juice Task Ready")]
+    public void FinishJuice() => stepFlags[0] = true;
 
-    [ContextMenu("Test Step 0")]
-    void TestStep0() { CompleteStep(0); }
-
-    [ContextMenu("Test Step 1")]
-    void TestStep1() { CompleteStep(1); }
-
-    [ContextMenu("Test Step 2")]
-    void TestStep2() { CompleteStep(2); }
+    [ContextMenu("Set Toast Task Ready")]
+    public void FinishToast() => stepFlags[1] = true;
 
     public void CompleteStep(int step)
-    {
-        switch(step) {
+    {   
+        if(isHealthy)
+        {
+            switch (step)
+        {
             case 0:
-                if(this.step == 0)
+                if (this.step == 0)
                 {
-                     GameObject Mug = BreakFastPrefabs.Find(g => g.name == "Mug");
+                    GameObject mug = FindChildInInstances("mug");
+                    if (mug != null)
+                    {
+                        if (!mug.TryGetComponent<Rigidbody>(out _)) mug.AddComponent<Rigidbody>();
+                        if (!mug.TryGetComponent<XRGrabInteractable>(out _)) mug.AddComponent<XRGrabInteractable>();
+                        mug.tag = "Beverage";
+                    }
 
-                     Mug.AddComponent<Rigidbody>();
-                     Mug.AddComponent<XRGrabInteractable>();
-                     Mug.tag = "Beverage";
+                    if(mug == null)
+                    {
+                            if (currentStation != null)
+                        {
+                            instantiatedObjects.Remove(currentStation);
+                            Destroy(currentStation);
+                        }
+
+                        if (isHealthy)
+                        {
+                            currentStation = Instantiate(ToastStation);
+                            instantiatedObjects.Add(currentStation);
+                        }
+
+                        this.step++;
+                    }
+
                 }
-            break;
+                break;
             case 1:
-                if(this.step == 1)
+                if (this.step == 1)
                 {
-                    GameObject Toast = BreakFastPrefabs.Find(g => g.name == "Toast");
+                    GameObject toast = FindChildInInstances("Toast");
+                    if (toast != null)
+                    {
+                        if (!toast.TryGetComponent<Rigidbody>(out _)) toast.AddComponent<Rigidbody>();
+                        if (!toast.TryGetComponent<XRGrabInteractable>(out _)) toast.AddComponent<XRGrabInteractable>();
+                        toast.tag = "Food";
+                    }
+                    
+                    if(toast == null)
+                    {
+                        if (currentStation != null)
+                        {
+                            instantiatedObjects.Remove(currentStation);
+                            Destroy(currentStation);
+                        }
 
-                     Toast.AddComponent<Rigidbody>();
-                     Toast.AddComponent<XRGrabInteractable>();
-                     Toast.tag = "Food"; 
+                        this.step++;
+                        CompleteTask();
+                    }
                 }
-              
-            break;
-            case 2:
-                if(this.step == 2)
-                {
-                    CompleteTask();
-                }
-             
-            break;
+                break;
+
         }
-    }
 
+        }
+        
+        else
+        {
+            instantiatedObjects.RemoveAll(obj => obj == null);
+
+            if (instantiatedObjects.Count == 0)
+            {
+                CompleteTask();
+            }
+        }
+        
+    }
 
     public void CompleteTask()
     {
-    if (task != null && !task.isCompleted)
+        Debug.Log("Task Completata!");
+        if (task != null && !task.isCompleted)
+        {
+            task.isCompleted = true;
+            TaskManager.Instance.UpdateTaskProgress(task);
+        }
+    }
+
+    [ContextMenu("Debug Print All Children Names")]
+    public void DebugPrintAllChildren()
     {
-        task.isCompleted = true;
-        TaskManager.Instance.UpdateTaskProgress(task);
+        foreach (var instance in instantiatedObjects)
+        {
+            if (instance == null) continue;
+            Transform[] allChildren = instance.GetComponentsInChildren<Transform>(true);
+            foreach (var child in allChildren)
+                Debug.Log($"[{instance.name}] → '{child.name}'");
+        }
     }
-
-    }
-
 }

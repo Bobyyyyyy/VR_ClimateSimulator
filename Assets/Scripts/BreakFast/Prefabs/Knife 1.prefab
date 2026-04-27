@@ -720,8 +720,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5494471571168379510}
-  - component: {fileID: 8768337757272775885}
   - component: {fileID: 156372070106174288}
+  - component: {fileID: 1546197756248876486}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -744,8 +744,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5561358280572603782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8768337757272775885
-SphereCollider:
+--- !u!114 &156372070106174288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006852111036544733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc442e47b47ca84a9a4b33b8633749c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Knife
+  jamDecal: {fileID: 1114376960698659097}
+--- !u!65 &1546197756248876486
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -763,18 +776,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2038795
-  m_Center: {x: 0.026276061, y: 0.065098695, z: 0}
---- !u!114 &156372070106174288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9006852111036544733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc442e47b47ca84a9a4b33b8633749c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Knife
-  jamDecal: {fileID: 1114376960698659097}
+  m_Size: {x: 1.1480927, y: 0.37898165, z: 0.10309048}
+  m_Center: {x: -0.36517453, y: 0.049785484, z: 0.007224477}

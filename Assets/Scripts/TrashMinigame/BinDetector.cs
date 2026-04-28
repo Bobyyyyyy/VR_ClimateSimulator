@@ -11,6 +11,8 @@ public class BinDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(insideTrash);
+
         GameObject collidedObject = other.gameObject;
         if (collidedObject.CompareTag("Trash"))
         {
@@ -28,6 +30,7 @@ public class BinDetector : MonoBehaviour
                 if (!insideTrash.Contains(collidedObject))
                 {
                     insideTrash.Add(collidedObject);
+                    
                 }
             }
             else
@@ -35,6 +38,7 @@ public class BinDetector : MonoBehaviour
                 rb = collidedObject.GetComponent<Rigidbody>();
                 rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
             }
+
 
         }
     }

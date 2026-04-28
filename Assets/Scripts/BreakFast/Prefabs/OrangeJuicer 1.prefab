@@ -386,6 +386,18 @@ MonoBehaviour:
   isSqueezing: 0
   requiredOranges: 3
   requiredJuiceTime: 15
+  squeezeAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Squeeze
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d5231dcc-4a84-408f-9c9e-449152afb2a3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   juiceFlow: {fileID: 3471003867307429763}
   mugLiquid: {fileID: 0}
 --- !u!1 &2721558467997891354

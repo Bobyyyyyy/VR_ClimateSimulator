@@ -102,6 +102,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3917681752172378484}
   m_SourcePrefab: {fileID: 100100000, guid: a61040c0e0912c38591acb7e7eb57a7c, type: 3}
+--- !u!1 &3739412652693008992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3859786242405017809, guid: a61040c0e0912c38591acb7e7eb57a7c, type: 3}
+  m_PrefabInstance: {fileID: 465481400110521009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4695676294754935144 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5143071655462222809, guid: a61040c0e0912c38591acb7e7eb57a7c, type: 3}
@@ -142,6 +147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6790777169997326542}
     m_Modifications:
+    - target: {fileID: 1515495624541413814, guid: 3719a5ecc3bbfff46a7e1df766e57f58, type: 3}
+      propertyPath: mugLiquid
+      value: 
+      objectReference: {fileID: 3739412652693008992}
     - target: {fileID: 2491246356595369895, guid: 3719a5ecc3bbfff46a7e1df766e57f58, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09000015

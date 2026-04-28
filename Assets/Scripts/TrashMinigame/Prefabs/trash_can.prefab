@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 3176506027266683587}
   - component: {fileID: 6668298664921398890}
   - component: {fileID: 4571804876948763991}
-  - component: {fileID: 6302853060882241395}
   m_Layer: 0
   m_Name: Colliders
   m_TagString: Untagged
@@ -300,27 +299,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BinDetector
   BinType: 0
---- !u!65 &6302853060882241395
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927669879811500993}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.22331466, y: 0.012915236, z: 0.32053098}
-  m_Center: {x: 0.0065596253, y: 0.39614868, z: 0.0014279092}
 --- !u!1 &1564283041108677355
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8715390921442987908}
+  - component: {fileID: 3885151820871098009}
   m_Layer: 0
   m_Name: Obj_TrashCan_Lid_3
   m_TagString: Untagged
@@ -538,6 +517,27 @@ Transform:
   - {fileID: 4318107771867763445}
   m_Father: {fileID: 5617158780894959020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3885151820871098009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128230913554496326}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.20545569, y: 0.017517468, z: 0.31246692}
+  m_Center: {x: 0.10960527, y: 0.0115347095, z: 0.16029242}
 --- !u!1 &4685113985749297542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6121796117244017755}
   - component: {fileID: 610018576715698121}
+  - component: {fileID: 1261573961779133978}
   m_Layer: 0
   m_Name: trash_can
   m_TagString: Untagged
@@ -1189,3 +1190,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &1261573961779133978
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099426617155820971}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

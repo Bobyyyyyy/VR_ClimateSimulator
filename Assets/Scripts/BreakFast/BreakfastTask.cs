@@ -8,8 +8,12 @@ public class BreakfastTask : MonoBehaviour
 
     public GameObject JuiceStation;
     public GameObject ToastStation;
-    public List<GameObject> SnackPrefabs;
+    public GameObject SnackStation;
     public GameObject BreakfastCanvas;
+    public GameObject StationSpawnPoint;
+    public GameObject Bell;
+    public GameObject BellSpawnPoint;
+
     public TaskData task;
 
     private List<GameObject> instantiatedObjects = new List<GameObject>();
@@ -31,20 +35,18 @@ public class BreakfastTask : MonoBehaviour
             CompleteStep(step);
     }
 
-    [ContextMenu("Start Task")]
-    public void BeginTask()
+    public void BeginTask(bool isHealthy)
     {
-        isHealthy = true;
-
         if (isHealthy)
         {
-            currentStation = Instantiate(JuiceStation);
+            currentStation = Instantiate(JuiceStation, StationSpawnPoint.transform.position,StationSpawnPoint.transform.rotation);
             instantiatedObjects.Add(currentStation);
+            instantiatedObjects.Add(Instantiate(Bell, BellSpawnPoint.transform.position, Bell.transform.rotation));
         }
         else
         {
-            foreach (var prefab in SnackPrefabs)
-                instantiatedObjects.Add(Instantiate(prefab));
+            currentStation = Instantiate(SnackStation, StationSpawnPoint.transform.position,StationSpawnPoint.transform.rotation);
+            instantiatedObjects.Add(currentStation);
         }
 
         Destroy(BreakfastCanvas);
@@ -120,7 +122,9 @@ public class BreakfastTask : MonoBehaviour
                         if (currentStation != null)
                         {
                             instantiatedObjects.Remove(currentStation);
+                            instantiatedObjects.Remove(Bell);
                             Destroy(currentStation);
+                            Destroy(Bell);
                         }
 
                         this.step++;

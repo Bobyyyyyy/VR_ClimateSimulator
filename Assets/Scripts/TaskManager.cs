@@ -1,6 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+
+public enum World_State
+{
+    Good,
+    Neutral,
+    Bad
+}
 
 public class TaskManager : MonoBehaviour
 {
@@ -8,43 +15,88 @@ public class TaskManager : MonoBehaviour
     public List<TaskData> activeTasks;
     public int completedTasks = 0;
 
-    private int points;
+    public World_State current_state = World_State.Neutral;
+
+    public int goodThreshold = 10;
+    public int badThreshold = -10;
+
+    public UnityEvent onWorldGood;
+    public UnityEvent onWorldNeutral;
+    public UnityEvent onWorldBad;
+    public UnityEvent<int> onPointsChanged;
+
+    private int points = 0;
 
     void Awake() => Instance = this;
 
-    public int getPoints()
+    public int getPoints() => points;
+
+    public void addPoints(int amount)
     {
-        return points;
+        points += amount;
+        onPointsChanged?.Invoke(points);
+        EvaluateWorld();
     }
 
-    /// <summary>
-    /// Checks if the current task is in the activeTasks and needs to be updated, if it is the function updates the completed status of the task.
-    /// </summary>
-    /// <param name="completedTask"></param>
+    public void removePoints(int amount)
+    {
+        points -= amount;
+        onPointsChanged?.Invoke(points);
+        EvaluateWorld();
+    }
+
+    private void EvaluateWorld()
+    {
+        World_State newState;
+
+        if (points >= goodThreshold)
+            newState = World_State.Good;
+        else if (points <= badThreshold)
+            newState = World_State.Bad;
+        else
+            newState = World_State.Neutral;
+
+        if (newState != current_state)
+        {
+            current_state = newState;
+            switch (current_state)
+            {
+                case World_State.Good:
+                    onWorldGood?.Invoke();
+                    break;
+                case World_State.Neutral:
+                    onWorldNeutral?.Invoke();
+                    break;
+                case World_State.Bad:
+                    onWorldBad?.Invoke();
+                    break;
+            }
+        }
+    }
+
     public void UpdateTaskProgress(TaskData completedTask)
     {
         TaskData task = activeTasks.Find(task => task.name == completedTask.name && task.isCompleted != completedTask.isCompleted);
 
         if (task != null)
         {
-            if(completedTask.isCompleted) {
+            if (completedTask.isCompleted)
                 completedTasks++;
-            }
-            else {
+            else
                 completedTasks--;
-            }
+
             task.isCompleted = completedTask.isCompleted;
         }
-
+        EvaluateWorld();
         CheckTasksStatus();
     }
-
 
     void CheckTasksStatus()
     {
         if (completedTasks >= activeTasks.Count)
         {
             Debug.Log("All tasks complete!");
+            EvaluateWorld();
         }
     }
 }

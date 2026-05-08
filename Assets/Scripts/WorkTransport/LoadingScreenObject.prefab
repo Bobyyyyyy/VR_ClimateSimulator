@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2957634784346476859}
   - component: {fileID: 2010239177117925160}
   - component: {fileID: 8455821414265232671}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreenObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4873502149349733391}
   - component: {fileID: 6230766148690240856}
   - component: {fileID: 650250510917836231}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4068558108208237179}
   - component: {fileID: 1263291492092952694}
   - component: {fileID: 3631138761034808083}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3770852191166541067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.596}
+  m_LocalPosition: {x: 0, y: 0, z: 0.335}
   m_LocalScale: {x: 0.12320699, y: 0.123207, z: 0.123207}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -271,6 +271,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -325,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3826283664933642606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +364,7 @@ GameObject:
   - component: {fileID: 6829712463052755621}
   - component: {fileID: 9144277199124893331}
   - component: {fileID: 1965749825726513850}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +439,7 @@ GameObject:
   - component: {fileID: 3101442318780279237}
   - component: {fileID: 4133607967136948049}
   - component: {fileID: 7409298138723323256}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2152361229940411121}
   - component: {fileID: 4746617118016529123}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +529,7 @@ RectTransform:
   m_GameObject: {fileID: 7414529488643937936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03070456, y: 0.03070456, z: 0.03070456}
+  m_LocalScale: {x: 0.00872163, y: 0.00872163, z: 0.00872163}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4873502149349733391}
@@ -538,7 +539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000038702, y: -0.27}
+  m_AnchoredPosition: {x: 0.0000037836, y: -0.27}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4746617118016529123
@@ -601,7 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2684481898988153690}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +640,7 @@ GameObject:
   - component: {fileID: 7648911551273730018}
   - component: {fileID: 2676503201869370958}
   - component: {fileID: 7081294576754904611}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

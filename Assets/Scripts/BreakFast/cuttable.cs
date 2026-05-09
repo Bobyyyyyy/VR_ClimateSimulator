@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Tagliabile : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Tagliabile : MonoBehaviour
     [Header("Separazione")]
     public float distanzaSeparazione = 0.05f; // offset iniziale fra le due metà
     public float forzaSeparazione = 1f;       // spinta impulsiva laterale
+
+    [Header("Layer del socket pomodoro")]
+    public InteractionLayerMask tomatoSocketLayer;
 
     public void EseguiTaglio()
     {
@@ -45,7 +49,11 @@ public class Tagliabile : MonoBehaviour
             meta.AddComponent<Rigidbody>();
 
         // XR Grab Interactable
-        if (meta.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>() == null)
-            meta.AddComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        var grab = meta.GetComponent<XRGrabInteractable>();
+        if (grab == null)
+            grab = meta.AddComponent<XRGrabInteractable>();
+
+        // Imposta il layer per matchare il socket pomodoro
+        grab.interactionLayers = tomatoSocketLayer;
     }
 }

@@ -7,10 +7,10 @@ public class DinnerTask : MonoBehaviour
     public TaskData dinnerTask;
 
     [Header("Socket del piatto")]
-    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor burgerSocket;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor paninoSocket;
     public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor eggSocket;
 
-    private bool burgerReady = false;
+    private bool paninoReady = false;
     private bool eggReady = false;
     private bool taskCompleted = false;
 
@@ -30,19 +30,27 @@ public class DinnerTask : MonoBehaviour
         if (taskCompleted) return;
 
         // Controlla continuamente lo stato degli oggetti nei socket
-        burgerReady = CheckSocket(burgerSocket);
-        eggReady = CheckSocket(eggSocket);
+        paninoReady = CheckPaninoSocket(paninoSocket);
+        eggReady = CheckCookedSocket(eggSocket);
 
-        if (burgerReady && eggReady)
+        if (paninoReady && eggReady)
         {
             CompleteTask();
         }
     }
 
     /// <summary>
+    /// Controlla se nel socket del panino è presente un oggetto (non deve essere cuocibile)
+    /// </summary>
+    private bool CheckPaninoSocket(UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket)
+    {
+        return socket.hasSelection;
+    }
+
+    /// <summary>
     /// Controlla se il socket ha un oggetto cotto (non crudo, non bruciato)
     /// </summary>
-    private bool CheckSocket(UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket)
+    private bool CheckCookedSocket(UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket)
     {
         if (!socket.hasSelection) return false;
 

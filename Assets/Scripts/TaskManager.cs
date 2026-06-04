@@ -5,7 +5,10 @@ using System.Collections.Generic;
 public enum World_State
 {
     Good,
+    Neutral_Good,
     Neutral,
+
+    Neutral_Bad,
     Bad
 }
 
@@ -21,15 +24,21 @@ public class TaskManager : MonoBehaviour
     public int badThreshold = -10;
 
     public UnityEvent onWorldGood;
+    public UnityEvent onWorldNeutralGood;
+
     public UnityEvent onWorldNeutral;
     public UnityEvent onWorldBad;
+    public UnityEvent onWorldNeutralBad;
+
     public UnityEvent<int> onPointsChanged;
+
 
     private int points = 0;
 
     void Awake() => Instance = this;
 
     public int getPoints() => points;
+
 
     public void addPoints(int amount)
     {
@@ -51,10 +60,15 @@ public class TaskManager : MonoBehaviour
 
         if (points >= goodThreshold)
             newState = World_State.Good;
+        else if (points >= goodThreshold / 2)
+            newState = World_State.Neutral_Good;
         else if (points <= badThreshold)
             newState = World_State.Bad;
+        else if (points <= badThreshold / 2)
+            newState = World_State.Neutral_Bad;
         else
             newState = World_State.Neutral;
+
 
         if (newState != current_state)
         {
@@ -64,12 +78,19 @@ public class TaskManager : MonoBehaviour
                 case World_State.Good:
                     onWorldGood?.Invoke();
                     break;
+                case World_State.Neutral_Good:
+                    onWorldNeutralGood?.Invoke();
+                    break;
                 case World_State.Neutral:
                     onWorldNeutral?.Invoke();
                     break;
+                case World_State.Neutral_Bad:
+                    onWorldNeutralBad?.Invoke();
+                 break;
                 case World_State.Bad:
                     onWorldBad?.Invoke();
                     break;
+                
             }
         }
     }
@@ -82,6 +103,7 @@ public class TaskManager : MonoBehaviour
         {
             if (completedTask.isCompleted)
                 completedTasks++;
+                
             else
                 completedTasks--;
 
@@ -99,4 +121,6 @@ public class TaskManager : MonoBehaviour
             EvaluateWorld();
         }
     }
+
+
 }

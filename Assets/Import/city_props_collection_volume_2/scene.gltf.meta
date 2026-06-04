@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: f350d404213b0174a81eb16f8782d713
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Import\city_props_collection_volume_2\scene.bin
+    assetPath: Assets\Import\city_props_collection_volume_2\scene.bin
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_metal_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_metal_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_metal_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_metal_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_metal_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_metal_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_glass_baseColor.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_glass_baseColor.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_glass_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_glass_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_glass_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_glass_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_sign_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_sign_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_sign_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_sign_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_sign_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bus_stop_sign_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_light_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_light_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_light_emissive.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_light_emissive.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_light_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_light_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_single_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_single_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_single_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_single_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_single_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_single_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_double_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_double_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_double_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_double_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_double_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_double_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_barrier_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_barrier_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_barrier_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_barrier_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_barrier_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_barrier_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_utility_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_utility_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_utility_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_utility_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_utility_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_utility_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_flat_bed_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_flat_bed_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_flat_bed_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_flat_bed_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_flat_bed_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_flat_bed_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_planter_pot_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_planter_pot_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_planter_pot_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_planter_pot_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_planter_pot_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_planter_pot_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_planter_square_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_planter_square_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_planter_square_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_planter_square_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_planter_square_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_planter_square_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_bed_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_bed_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_bed_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_bed_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_bed_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_bed_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_trash_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_trash_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_trash_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_trash_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_trash_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_trash_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_valet_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_valet_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_valet_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_valet_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_valet_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_valet_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_information_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_information_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_information_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_information_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_information_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_information_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_crosswalk_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_crosswalk_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_crosswalk_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_crosswalk_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_crosswalk_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_crosswalk_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_parking_sign_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_parking_sign_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_parking_sign_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_parking_sign_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_parking_sign_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_parking_sign_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_directory_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_directory_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_directory_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_directory_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_directory_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_directory_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_landscape_bed_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_landscape_bed_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_landscape_bed_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_landscape_bed_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_landscape_bed_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_landscape_bed_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_parking_curb_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_parking_curb_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_parking_curb_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_parking_curb_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_parking_curb_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_parking_curb_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_vent_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_vent_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_vent_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_vent_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_vent_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_vent_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_sign_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_sign_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_sign_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_sign_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_sign_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_sign_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_wood_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_wood_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_wood_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_wood_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_bench_wood_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_bench_wood_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_clock_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_clock_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_clock_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_clock_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_clock_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_clock_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_long_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_long_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_long_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_long_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_long_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_long_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_short_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_short_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_short_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_short_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_short_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_short_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_step_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_step_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_step_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_step_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_rail_step_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_rail_step_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_tash_bin_blue_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_tash_bin_blue_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_tash_bin_blue_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_tash_bin_blue_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_tash_bin_blue_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_tash_bin_blue_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_trash_bin_green_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_trash_bin_green_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_manhole0_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_manhole0_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_manhole1_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_manhole1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_manhole2_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_manhole2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_manhole3_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_manhole3_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_emissive.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_emissive.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_lamp0_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_lamp1_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_lamp1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_stairs_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_stairs_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_stairs_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_stairs_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_stairs_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_stairs_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_hardware_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_hardware_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_hardware_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_hardware_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_hardware_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_hardware_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_glass_baseColor.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_glass_baseColor.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_glass_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_glass_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail2_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail2_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail2_metallicRoughness.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail2_metallicRoughness.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail2_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_rail2_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_base_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_base_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_base_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_base_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_door_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_door_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_roof_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_roof_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\M_subway_roof_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\M_subway_roof_normal.png
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\standardSurface1_baseColor.jpeg
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\standardSurface1_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Import\city_props_collection_volume_2\textures\standardSurface1_normal.png
+    assetPath: Assets\Import\city_props_collection_volume_2\textures\standardSurface1_normal.png
+  reportItems:
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_specular
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_emissive_strength

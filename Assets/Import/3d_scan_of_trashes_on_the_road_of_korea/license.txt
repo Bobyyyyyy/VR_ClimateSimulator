@@ -1,0 +1,11 @@
+Model Information:
+* title:	3D Scan of Trashes on the road of korea
+* source:	https://sketchfab.com/3d-models/3d-scan-of-trashes-on-the-road-of-korea-7d13940107c94b719f4e39c8d8bfb765
+* author:	Mongda (https://sketchfab.com/Mongda)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "3D Scan of Trashes on the road of korea" (https://sketchfab.com/3d-models/3d-scan-of-trashes-on-the-road-of-korea-7d13940107c94b719f4e39c8d8bfb765) by Mongda (https://sketchfab.com/Mongda) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

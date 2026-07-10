@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class VRLoadingOverlay : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class VRLoadingOverlay : MonoBehaviour
 
     Slider loadingBar;
 
-    Camera MainCamera;    
+    Camera MainCamera;
     Camera LoadingScreenCamera;
     GameObject overlayCanvas;
+
+    readonly List<GraphicRaycaster> disabledRaycasters = new List<GraphicRaycaster>();
 
     [ContextMenu("BusTravel")]
     public void StartBusTravel() => StartCoroutine(LoadingSequence(15f));
@@ -34,7 +37,20 @@ public class VRLoadingOverlay : MonoBehaviour
 
         overlayCanvas.SetActive(false);
 
-
+        // Le canvas world-space che usano la camera del VRPlayer come event camera vanno
+        // disattivate finché quella camera resta spenta: altrimenti l'EventSystem continua a
+        // proiettare i raycast su una camera disattivata e spamma
+        // "Screen position out of view frustum (-nan(ind), -nan(ind))" ogni frame.
+        disabledRaycasters.Clear();
+        foreach (var raycaster in FindObjectsByType<GraphicRaycaster>(FindObjectsSortMode.None))
+        {
+            var canvas = raycaster.GetComponent<Canvas>();
+            if (raycaster.enabled && canvas != null && canvas.worldCamera == MainCamera)
+            {
+                raycaster.enabled = false;
+                disabledRaycasters.Add(raycaster);
+            }
+        }
 
         VRPlayer.SetActive(false);
         //Disable VRPlayer and set newCamera
@@ -58,6 +74,10 @@ public class VRLoadingOverlay : MonoBehaviour
         LoadingScreenClone.SetActive(false); 
         LoadingScreenCamera.tag = "Untagged";
         VRPlayer.SetActive(true);
+
+        foreach (var raycaster in disabledRaycasters)
+            if (raycaster != null) raycaster.enabled = true;
+        disabledRaycasters.Clear();
 
         Destroy(LoadingScreenClone);
         

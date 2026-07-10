@@ -32,6 +32,11 @@ public class BurgerAssembler : MonoBehaviour
         SetSocket(topBunSocket, false);
         if (finalGrab != null) finalGrab.enabled = false;
 
+        // Rimuove Rigidbody/Collider indesiderati su parti statiche del modello (es. node_id117,
+        // il pane inferiore): se restano, la fisica li simula indipendentemente dal Rigidbody
+        // del root e si "staccano" visivamente quando il panino viene afferrato.
+        CleanupStrayChildPhysics();
+
         // Durante l'assemblaggio il panino resta kinematic e senza gravità
         var rb = GetComponent<Rigidbody>();
         if (rb != null)
@@ -204,6 +209,22 @@ public class BurgerAssembler : MonoBehaviour
     private void SetSocket(XRSocketInteractor socket, bool active)
     {
         if (socket != null) socket.socketActive = active;
+    }
+
+    private void CleanupStrayChildPhysics()
+    {
+        var ownRb = GetComponent<Rigidbody>();
+        foreach (var childRb in GetComponentsInChildren<Rigidbody>(true))
+        {
+            if (childRb == ownRb) continue;
+
+            Debug.Log($"[Assembler] Rigidbody indesiderato trovato su '{childRb.name}' → rimuovo Rigidbody e Collider per bloccarlo alla gerarchia del panino");
+
+            var childCollider = childRb.GetComponent<Collider>();
+            if (childCollider != null) Destroy(childCollider);
+
+            Destroy(childRb);
+        }
     }
 
     private IEnumerator LockNextFrame(GameObject go, XRSocketInteractor socket)

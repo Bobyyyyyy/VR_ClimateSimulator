@@ -1,9 +1,9 @@
 using UnityEngine;
 
 
-public class DinnerTask : MonoBehaviour
+public class DinnerManager : MonoBehaviour
 {
-    public static DinnerTask Instance;
+    public static DinnerManager Instance;
     public TaskData dinnerTask;
 
     [Header("Socket del piatto")]

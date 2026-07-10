@@ -156,7 +156,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 66.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3088060
 MonoBehaviour:
@@ -286,6 +286,10 @@ PrefabInstance:
     - target: {fileID: 3452694226032689571, guid: 7d297ce6a487c0247b5edccce4ece3c6, type: 3}
       propertyPath: m_Name
       value: Tomato (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3452694226032689571, guid: 7d297ce6a487c0247b5edccce4ece3c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -449,7 +453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Inserisci il ketchup
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -476,10 +480,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 18.8
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -515,7 +519,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 50.04883, y: 13.909577, z: -179.0228, w: 15.048861}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2735,6 +2739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomato (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3452694226032689571, guid: 7d297ce6a487c0247b5edccce4ece3c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3367,7 +3375,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 66.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &240582660
 MonoBehaviour:
@@ -4116,6 +4124,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   activeTasks: []
   completedTasks: 0
+  current_state: 1
+  goodThreshold: 10
+  badThreshold: -10
+  onWorldGood:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldNeutral:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldBad:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointsChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &303352921
 Transform:
   m_ObjectHideFlags: 0
@@ -4374,7 +4397,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -10.346, y: 1.504}
-  m_SizeDelta: {x: 600, y: 503.15}
+  m_SizeDelta: {x: 600, y: 391.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &310574012
 PrefabInstance:
@@ -5506,7 +5529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &385127327
 Transform:
   m_ObjectHideFlags: 0
@@ -6083,7 +6106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &424358230
 Transform:
   m_ObjectHideFlags: 0
@@ -12922,6 +12945,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7608240248841205652, guid: d74f3a8534dcedd46838d03042f5cf27, type: 3}
   m_PrefabInstance: {fileID: 1672543500}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &575098283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575098284}
+  m_Layer: 0
+  m_Name: AttachPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &575098284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575098283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.806, y: -0.3077, z: 0.2792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8851522808820392767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &576603587
 GameObject:
   m_ObjectHideFlags: 0
@@ -12956,9 +13010,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BreakfastTask
   JuiceStation: {fileID: 0}
   ToastStation: {fileID: 0}
-  SnackPrefabs:
-  - {fileID: 1226745235685251745, guid: 1922da5d5bef36b41a1aa9956890f8d9, type: 3}
+  SnackStation: {fileID: 0}
   BreakfastCanvas: {fileID: 0}
+  StationSpawnPoint: {fileID: 0}
+  Bell: {fileID: 0}
+  BellSpawnPoint: {fileID: 0}
   task: {fileID: 0}
 --- !u!114 &576603589
 MonoBehaviour:
@@ -12990,6 +13046,21 @@ MonoBehaviour:
   activeTasks:
   - {fileID: 11400000, guid: e66471c58c761d1fab4fda626c905dcb, type: 2}
   completedTasks: 0
+  current_state: 1
+  goodThreshold: 10
+  badThreshold: -10
+  onWorldGood:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldNeutral:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldBad:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointsChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &576603591
 Transform:
   m_ObjectHideFlags: 0
@@ -13187,7 +13258,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 66.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607269910
 MonoBehaviour:
@@ -13683,7 +13754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &632227410
 Transform:
   m_ObjectHideFlags: 0
@@ -14937,7 +15008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &725302103
 Transform:
   m_ObjectHideFlags: 0
@@ -15389,7 +15460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 11.7, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782316310
@@ -15412,7 +15483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Inserisci la carne cotta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15439,10 +15510,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 18.9
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -15478,7 +15549,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 38.541794, y: 14.633184, z: -207.38028, w: 14.216184}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -17394,6 +17465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomato
       objectReference: {fileID: 0}
+    - target: {fileID: 3452694226032689571, guid: 7d297ce6a487c0247b5edccce4ece3c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17540,7 +17615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220, y: 139}
+  m_AnchoredPosition: {x: -220, y: 83.80002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943824771
@@ -17562,8 +17637,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -19809,7 +19884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10.2, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1088462233
@@ -19832,7 +19907,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Inserisci la maionese
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19859,10 +19934,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 18
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -19898,7 +19973,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 39.958954, y: 14.987942, z: -164.53265, w: 15.404582}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -26265,7 +26340,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 66.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194519975
 MonoBehaviour:
@@ -26398,7 +26473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7445430325606305002, guid: d9ec2fb4751d323d496738493169bc22, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9006852111036544733, guid: d9ec2fb4751d323d496738493169bc22, type: 3}
       propertyPath: m_TagString
@@ -26824,7 +26899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1204885518
 Transform:
   m_ObjectHideFlags: 0
@@ -27863,7 +27938,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 66.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292684674
 MonoBehaviour:
@@ -35835,6 +35910,7 @@ Transform:
   - {fileID: 825582015}
   - {fileID: 115506804}
   - {fileID: 1195779804}
+  - {fileID: 9098815016741285119}
   - {fileID: 8851522808820392767}
   - {fileID: 1833154052}
   - {fileID: 86730647}
@@ -36925,7 +37001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 14.5, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545356837
@@ -36948,7 +37024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Inserisci il pane sopra
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36975,10 +37051,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 18.45
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -37014,7 +37090,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 39.247513, y: 14.343501, z: -163.45596, w: 15.030624}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -39587,6 +39663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomato (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3452694226032689571, guid: 7d297ce6a487c0247b5edccce4ece3c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41768,7 +41848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1864744630
 Transform:
   m_ObjectHideFlags: 0
@@ -42190,7 +42270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1876259462
 Transform:
   m_ObjectHideFlags: 0
@@ -42348,7 +42428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50.8, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880507878
@@ -42371,7 +42451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Inserisci l'uovo cotto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -42398,10 +42478,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 19.8
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -42437,7 +42517,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 14.211298, z: -118.87456, w: 13.65316}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -44852,7 +44932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2033010512
 Transform:
   m_ObjectHideFlags: 0
@@ -47361,7 +47441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49}
+  m_AnchoredPosition: {x: 0, y: -6.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2147047882
@@ -47411,10 +47491,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 48.9
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -49701,6 +49781,7 @@ GameObject:
   - component: {fileID: 8851522808820392770}
   - component: {fileID: 8851522808820392769}
   - component: {fileID: 8851522808820392768}
+  - component: {fileID: 8851522808820392771}
   m_Layer: 0
   m_Name: burger
   m_TagString: Untagged
@@ -51089,7 +51170,6 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 9098815016741285119}
   - {fileID: 7940900551102849831}
   - {fileID: 1542264285}
   - {fileID: 451956165}
@@ -51104,6 +51184,7 @@ Transform:
   - {fileID: 385127327}
   - {fileID: 1876259462}
   - {fileID: 2033010512}
+  - {fileID: 575098284}
   m_Father: {fileID: 1467639904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8851522808820392768
@@ -51180,7 +51261,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 575098284}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -51243,7 +51324,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4902813855736336254}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -51258,7 +51339,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -51277,7 +51358,7 @@ MonoBehaviour:
   panino: {fileID: 1621054708}
   hamburgerSocket: {fileID: 1542264284}
   eggSocket: {fileID: 451956164}
-  topBunSocket: {fileID: 0}
+  topBunSocket: {fileID: 424885512}
   finalGrab: {fileID: 8851522808820392768}
   onSaucesDone:
     m_PersistentCalls:
@@ -51292,6 +51373,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   currentStage: 0
+--- !u!65 &8851522808820392771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902813855736336254}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.15959263, y: 0.027223304, z: 0.1598978}
+  m_Center: {x: 0.87892056, y: -0.297825, z: 0.29290855}
 --- !u!23 &8913387276075313764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -51468,12 +51570,12 @@ Transform:
   m_GameObject: {fileID: 7116582473383544791}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.88320017, y: -0.60379994, z: 0.0079}
-  m_LocalScale: {x: 0.009353677, y: 0.009353677, z: 0.009353677}
+  m_LocalPosition: {x: 1.30406, y: -0.32472932, z: -3.7534933}
+  m_LocalScale: {x: 0.0074829417, y: 0.0074829417, z: 0.0074829417}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 124550215}
-  m_Father: {fileID: 8851522808820392767}
+  m_Father: {fileID: 1467639904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9098815016741285120
 MonoBehaviour:

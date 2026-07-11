@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class LightSwitchVR : MonoBehaviour
@@ -6,6 +7,15 @@ public class LightSwitchVR : MonoBehaviour
     [Header("Luci da controllare")]
     [Tooltip("Trascina qui tutte le Light che vuoi accendere/spegnere")]
     public Light[] lights;
+
+    [Tooltip("Intensità di ogni luce quando accesa (stesso ordine dell'array 'lights')")]
+    public float[] onIntensities;
+    [Tooltip("Intensità di ogni luce quando spenta (stesso ordine dell'array 'lights')")]
+    public float[] offIntensities;
+
+    [Header("Task giornata (opzionale)")]
+    [Tooltip("Sparato quando l'interruttore viene acceso")]
+    public UnityEvent onTurnedOn;
 
     [Header("Animazione Interruttore")]
     [Tooltip("L'oggetto Switch che ruota visivamente")]
@@ -30,20 +40,16 @@ public class LightSwitchVR : MonoBehaviour
     private float currentAngle;
     private float targetAngle;
 
-    // Salva le intensità originali per ripristinarle
-    private float[] originalIntensities;
+    private bool locked = false;
+
+    public void Lock() => locked = true;
 
     void Awake()
     {
         simpleInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
         simpleInteractable.selectEntered.AddListener(OnPress);
 
-        originalIntensities = new float[lights.Length];
-        for (int i = 0; i < lights.Length; i++)
-        {
-            if (lights[i] != null)
-                originalIntensities[i] = lights[i].intensity;
-        }
+        ApplyLightState();
 
         if (switchTransform != null)
         {
@@ -60,13 +66,25 @@ public class LightSwitchVR : MonoBehaviour
 
     private void OnPress(SelectEnterEventArgs args)
     {
+        if (locked) return;
+
         isOn = !isOn;
         targetAngle = isOn ? onAngle : offAngle;
 
+        ApplyLightState();
+
+        if (isOn) onTurnedOn?.Invoke();
+    }
+
+    private void ApplyLightState()
+    {
         for (int i = 0; i < lights.Length; i++)
         {
-            if (lights[i] != null)
-                lights[i].intensity = isOn ? originalIntensities[i] : 0f;
+            if (lights[i] == null) continue;
+
+            float onValue = i < onIntensities.Length ? onIntensities[i] : 0f;
+            float offValue = i < offIntensities.Length ? offIntensities[i] : 0f;
+            lights[i].intensity = isOn ? onValue : offValue;
         }
     }
 

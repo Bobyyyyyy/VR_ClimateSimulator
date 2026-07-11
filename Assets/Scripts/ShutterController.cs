@@ -1,26 +1,35 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MovimentoLineare : MonoBehaviour
 {
     [Header("Riferimenti")]
     public Transform oggettoDaMuovere;
-    
+
     [Tooltip("Trascina qui la Point Light che hai creato dentro la stanza")]
-    public Light luceDiRimbalzo; 
+    public Light luceDiRimbalzo;
 
     [Header("Impostazioni Posizione Y")]
-    public float yAlta = 5f;  
-    public float yBassa = 0f;  
+    public float yAlta = 5f;
+    public float yBassa = 0f;
 
     [Header("Impostazioni Movimento")]
-    public float velocita = 2f; 
+    public float velocita = 2f;
 
     [Header("Impostazioni Luce")]
     public float intensitaLuceMassima = 2f; // Quanta luce c'è quando è aperta
     public float intensitaLuceMinima = 0f;  // Quanta luce c'è quando è chiusa
 
+    [Header("Task giornata (opzionale)")]
+    [Tooltip("Sparato una sola volta quando la tapparella raggiunge l'apertura massima")]
+    public UnityEvent onFullyOpen;
+
     private bool staSalendo = false;
     private bool staScendendo = false;
+    private bool fullyOpenFired = false;
+    private bool locked = false;
+
+    public void Lock() => locked = true;
 
     void Update()
     {
@@ -42,25 +51,32 @@ public class MovimentoLineare : MonoBehaviour
             oggettoDaMuovere.localPosition = new Vector3(posizioneAttuale.x, nuovaY, posizioneAttuale.z);
 
             // --- GESTIONE DELLA LUCE ---
+            float percentualeApertura = Mathf.InverseLerp(yBassa, yAlta, nuovaY);
+
             if (luceDiRimbalzo != null)
             {
-                // Calcoliamo la percentuale di apertura (da 0.0 a 1.0)
-                float percentualeApertura = Mathf.InverseLerp(yBassa, yAlta, nuovaY);
-                
                 // Applichiamo l'intensità in base alla percentuale
                 luceDiRimbalzo.intensity = Mathf.Lerp(intensitaLuceMinima, intensitaLuceMassima, percentualeApertura);
+            }
+
+            if (!fullyOpenFired && percentualeApertura >= 0.98f)
+            {
+                fullyOpenFired = true;
+                onFullyOpen?.Invoke();
             }
         }
     }
 
     public void IniziaSalita()
     {
+        if (locked) return;
         staSalendo = true;
         staScendendo = false;
     }
 
     public void IniziaDiscesa()
     {
+        if (locked) return;
         staScendendo = true;
         staSalendo = false;
     }

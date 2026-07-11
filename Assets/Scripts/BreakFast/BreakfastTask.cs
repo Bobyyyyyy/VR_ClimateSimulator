@@ -151,12 +151,13 @@ public class BreakfastTask : MonoBehaviour
 
     public void CompleteTask()
     {
+        if (task == null || task.isCompleted) return;
+        if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(task)) return;
+
         Debug.Log("Task Completata!");
-        if (task != null && !task.isCompleted)
-        {
-            task.isCompleted = true;
-            TaskManager.Instance.UpdateTaskProgress(task);
-        }
+        task.isCompleted = true;
+        TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+        TaskManager.Instance.UpdateTaskProgress(task);
     }
 
     [ContextMenu("Debug Print All Children Names")]

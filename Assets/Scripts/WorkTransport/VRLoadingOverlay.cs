@@ -10,6 +10,10 @@ public class VRLoadingOverlay : MonoBehaviour
     public GameObject LoadingScreen;
     GameObject LoadingScreenClone;
 
+    [Header("Task giornata (opzionale)")]
+    [Tooltip("Il lavoro non assegna punti: è solo una schermata di attesa tra colazione e cena")]
+    public TaskData workTask;
+
     Slider loadingBar;
 
     Camera MainCamera;
@@ -80,6 +84,16 @@ public class VRLoadingOverlay : MonoBehaviour
         disabledRaycasters.Clear();
 
         Destroy(LoadingScreenClone);
-        
+
+        CompleteWorkTask();
+    }
+
+    private void CompleteWorkTask()
+    {
+        if (workTask == null || workTask.isCompleted) return;
+        if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(workTask)) return;
+
+        workTask.isCompleted = true;
+        TaskManager.Instance.UpdateTaskProgress(workTask); // 0 punti: è solo una schermata di attesa
     }
 }

@@ -4,61 +4,102 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class FridgeDinnerMenu : MonoBehaviour
 {
-    [Header("Set 'Crea la cena' (burger, node_id105, UncrackedEgg_239: già in scena, disattivati di default)")]
+    [Header("Task giornata")]
+    [Tooltip("Completato da 'Ordina cena' subito, oppure da BurgerAssembler.onAssemblyComplete per 'Crea la cena'")]
+    public TaskData dinnerTask;
+
+    [Header("Menu bottoni: sparisce non appena si sceglie")]
+    public GameObject menuCanvas;
+
+    [Header("Ricetta a muro: visibile solo per 'Crea la cena'")]
+    public GameObject recipeOnWall;
+
+    [Header("Set 'Crea la cena' (carne, padella, uovo ecc. già presenti come figli statici)")]
     public GameObject makeDinnerSet;
-    public Transform makeDinnerExtraAnchor;
-    public GameObject uncookedPattyPrefab;
-    public GameObject panPrefab;
 
-    [Header("Materiali padella/cottura per la patty (assegnati qui perché non caricabili da codice a runtime)")]
-    public Material pattyRawMaterial;
-    public Material pattyCookedMaterial;
-    public Material pattyBurntMaterial;
-
-    [Header("Set 'Ordina cena' (vuoto: viene popolato instanziando i prefab)")]
+    [Header("Set 'Ordina cena'")]
     public Transform orderDinnerAnchor;
     public GameObject pizzaPrefab;
     public GameObject sodaPrefab;
 
-    private readonly List<GameObject> spawnedMakeExtras = new List<GameObject>();
     private readonly List<GameObject> spawnedOrderItems = new List<GameObject>();
 
     void Start()
     {
         if (makeDinnerSet != null) makeDinnerSet.SetActive(false);
         if (orderDinnerAnchor != null) orderDinnerAnchor.gameObject.SetActive(false);
+        if (recipeOnWall != null) recipeOnWall.SetActive(false);
+
+        UpdateMenuVisibility();
+
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.AddListener(OnTaskChanged);
+    }
+
+    void OnDestroy()
+    {
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
+    }
+
+    private void OnTaskChanged(TaskData newCurrentTask)
+    {
+        UpdateMenuVisibility();
+    }
+
+    // Il menu del frigo compare solo quando è il turno del task cena
+    // (cioè non prima che il task del lavoro sia finito).
+    private void UpdateMenuVisibility()
+    {
+        if (menuCanvas == null) return;
+
+        bool shouldShow = dinnerTask != null && !dinnerTask.isCompleted
+            && TaskManager.Instance != null && TaskManager.Instance.IsCurrentTask(dinnerTask);
+
+        menuCanvas.SetActive(shouldShow);
     }
 
     [ContextMenu("Ordina cena")]
     public void OrderDinner()
     {
+        if (menuCanvas != null) menuCanvas.SetActive(false);
+        if (recipeOnWall != null) recipeOnWall.SetActive(false);
+
         if (makeDinnerSet != null) makeDinnerSet.SetActive(false);
-        ClearSpawned(spawnedMakeExtras);
 
         if (orderDinnerAnchor == null) return;
         orderDinnerAnchor.gameObject.SetActive(true);
 
         if (spawnedOrderItems.Count == 0)
         {
-            SpawnGrabbable(pizzaPrefab, orderDinnerAnchor, new Vector3(0f, 0f, 0f), spawnedOrderItems);
-            SpawnGrabbable(sodaPrefab, orderDinnerAnchor, new Vector3(0.25f, 0f, 0f), spawnedOrderItems);
+            SpawnGrabbable(pizzaPrefab, orderDinnerAnchor, new Vector3(0f, 0f, 0f), spawnedOrderItems, Vector3.one * 0.3f);
+            SpawnGrabbable(sodaPrefab, orderDinnerAnchor, new Vector3(0.25f, 0f, 0f), spawnedOrderItems, Vector3.one * 0.3f);
         }
+
+        // Ordinare la cena non richiede altri passaggi: è già pronta da mangiare.
+        CompleteDinnerTask();
+    }
+
+    public void CompleteDinnerTask()
+    {
+        if (dinnerTask == null || dinnerTask.isCompleted) return;
+        if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(dinnerTask)) return;
+
+        dinnerTask.isCompleted = true;
+        TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+        TaskManager.Instance.UpdateTaskProgress(dinnerTask);
     }
 
     [ContextMenu("Crea la cena")]
     public void MakeDinner()
     {
+        if (menuCanvas != null) menuCanvas.SetActive(false);
+        if (recipeOnWall != null) recipeOnWall.SetActive(true);
+
         if (orderDinnerAnchor != null) orderDinnerAnchor.gameObject.SetActive(false);
         ClearSpawned(spawnedOrderItems);
 
         if (makeDinnerSet != null) makeDinnerSet.SetActive(true);
-        if (makeDinnerExtraAnchor == null) return;
-
-        if (spawnedMakeExtras.Count == 0)
-        {
-            SpawnPatty(uncookedPattyPrefab, makeDinnerExtraAnchor, new Vector3(0.3f, 0f, 0f));
-            SpawnPan(panPrefab, makeDinnerExtraAnchor, new Vector3(-0.3f, 0f, 0.2f));
-        }
     }
 
     private void ClearSpawned(List<GameObject> list)
@@ -68,11 +109,12 @@ public class FridgeDinnerMenu : MonoBehaviour
         list.Clear();
     }
 
-    private GameObject SpawnGrabbable(GameObject prefab, Transform parent, Vector3 localOffset, List<GameObject> track)
+    private GameObject SpawnGrabbable(GameObject prefab, Transform parent, Vector3 localOffset, List<GameObject> track, Vector3? localScale = null)
     {
         if (prefab == null) return null;
         var instance = Instantiate(prefab, parent);
         instance.transform.localPosition = localOffset;
+        if (localScale.HasValue) instance.transform.localScale = localScale.Value;
 
         if (instance.GetComponentInChildren<Collider>() == null)
             FitBoxCollider(instance, false);
@@ -85,43 +127,6 @@ public class FridgeDinnerMenu : MonoBehaviour
 
         track.Add(instance);
         return instance;
-    }
-
-    private void SpawnPatty(GameObject prefab, Transform parent, Vector3 localOffset)
-    {
-        var instance = SpawnGrabbable(prefab, parent, localOffset, spawnedMakeExtras);
-        if (instance == null) return;
-
-        var cookable = instance.GetComponent<CookableFood>();
-        if (cookable == null) cookable = instance.AddComponent<CookableFood>();
-
-        cookable.timeToCook = 5f;
-        cookable.timeToBurn = 10f;
-        cookable.panTag = "Pan";
-        cookable.rawPrefab = prefab;
-        cookable.foodParts = new[]
-        {
-            new FoodPart
-            {
-                partName = "Hamburger",
-                partRenderer = instance.GetComponentInChildren<Renderer>(),
-                rawMaterial = pattyRawMaterial,
-                cookedMaterial = pattyCookedMaterial,
-                burntMaterial = pattyBurntMaterial,
-            }
-        };
-    }
-
-    private void SpawnPan(GameObject prefab, Transform parent, Vector3 localOffset)
-    {
-        var instance = SpawnGrabbable(prefab, parent, localOffset, spawnedMakeExtras);
-        if (instance == null) return;
-
-        instance.tag = "Pan";
-        if (instance.GetComponent<Pan>() == null) instance.AddComponent<Pan>();
-
-        // Serve un collider trigger per rilevare cibo/fornello, in aggiunta all'eventuale collider fisico del prefab.
-        FitBoxCollider(instance, true);
     }
 
     private void FitBoxCollider(GameObject go, bool isTrigger)

@@ -37,11 +37,12 @@ public class TrashTask : MonoBehaviour
 
     private void CompleteTask()
     {
-        if (trashTask != null && !trashTask.isCompleted)
-        {
-            trashTask.isCompleted = true;
-            TaskManager.Instance.UpdateTaskProgress(trashTask);
-            Destroy(this);
-        }
+        if (trashTask == null || trashTask.isCompleted) return;
+        if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(trashTask)) return;
+
+        trashTask.isCompleted = true;
+        TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+        TaskManager.Instance.UpdateTaskProgress(trashTask);
+        Destroy(this);
     }
 }

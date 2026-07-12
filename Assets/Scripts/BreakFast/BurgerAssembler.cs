@@ -178,6 +178,10 @@ public class BurgerAssembler : MonoBehaviour
                     Debug.LogWarning("[Assembler] Complete: finalGrab è NULL!");
                 }
 
+                // Il panino è pronto da mangiare: CameraCollider lo farà sparire quando viene
+                // avvicinato alla bocca, come già succede per mug/toast a colazione.
+                gameObject.tag = "Food";
+
                 onAssemblyComplete?.Invoke();
                 Debug.Log("Panino pronto da mangiare!");
 

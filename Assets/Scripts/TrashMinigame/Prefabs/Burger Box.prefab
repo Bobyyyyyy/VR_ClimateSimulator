@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7974834502591836381}
+  - component: {fileID: 836139650763798036}
   m_Layer: 0
   m_Name: Burger Box
   m_TagString: Trash
@@ -144,3 +145,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8587179, y: 1.1817331, z: 1.6221176}
   m_Center: {x: -0.025766099, y: -0.041016944, z: 0.008938088}
+--- !u!114 &836139650763798036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061331428165606671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 6d16e538ec32720468c1b64c6f305b41, type: 2}

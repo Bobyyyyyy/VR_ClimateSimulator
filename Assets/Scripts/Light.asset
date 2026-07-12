@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Light
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
   taskName: Scelta illuminazione
-  description: Apri la tapparella per la luce naturale, o accendi l'interruttore per la luce artificiale.
+  description: Apri le tapparelle per la luce naturale, o accendi l'interruttore
+    per la luce artificiale.
   isCompleted: 0

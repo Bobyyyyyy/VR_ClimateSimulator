@@ -6,9 +6,11 @@ public class BreakfastTask : MonoBehaviour
 {
     public static BreakfastTask Instance;
 
+    [Header("Stazioni già presenti in scena (disattivate di default)")]
     public GameObject JuiceStation;
     public GameObject ToastStation;
     public GameObject SnackStation;
+
     public GameObject BreakfastCanvas;
     public GameObject StationSpawnPoint;
     public GameObject Bell;
@@ -16,15 +18,56 @@ public class BreakfastTask : MonoBehaviour
 
     public TaskData task;
 
+    [Tooltip("Quanti oggetti dello spuntino bisogna mangiare/bere per completare il percorso (non serve finire tutta la Snack Station)")]
+    public int minSnackItemsToEat = 5;
+
     private List<GameObject> instantiatedObjects = new List<GameObject>();
-    private GameObject currentStation;
+    private List<GameObject> snackItems = new List<GameObject>();
+    private int initialSnackItemCount = 0;
+    private GameObject bellInstance;
     private bool isHealthy;
     private int step = 0;
     private bool[] stepFlags = new bool[2];
 
     void Awake() => Instance = this;
 
-    public bool IsCurrentStepReady() => stepFlags[step];
+    void Start()
+    {
+        if (JuiceStation != null) JuiceStation.SetActive(false);
+        if (ToastStation != null) ToastStation.SetActive(false);
+        if (SnackStation != null) SnackStation.SetActive(false);
+
+        UpdateCanvasVisibility();
+
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.AddListener(OnTaskChanged);
+    }
+
+    void OnDestroy()
+    {
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
+    }
+
+    private void OnTaskChanged(TaskData newCurrentTask)
+    {
+        UpdateCanvasVisibility();
+    }
+
+    // Il canvas compare solo quando è il turno del task colazione (spazzatura completata).
+    private void UpdateCanvasVisibility()
+    {
+        if (BreakfastCanvas == null) return;
+
+        bool shouldShow = task != null && !task.isCompleted
+            && TaskManager.Instance != null && TaskManager.Instance.IsCurrentTask(task);
+
+        BreakfastCanvas.SetActive(shouldShow);
+    }
+
+    // Il percorso spuntino non ha uno step di preparazione (il cibo è già pronto da mangiare),
+    // quindi la campanella deve poter far scattare il controllo di completamento in ogni momento.
+    public bool IsCurrentStepReady() => !isHealthy || stepFlags[step];
 
     [ContextMenu("Test Completion Step")]
     public void TryCompleteCurrentStep()
@@ -37,16 +80,36 @@ public class BreakfastTask : MonoBehaviour
 
     public void BeginTask(bool isHealthy)
     {
+        this.isHealthy = isHealthy;
+
         if (isHealthy)
         {
-            currentStation = Instantiate(JuiceStation, StationSpawnPoint.transform.position,StationSpawnPoint.transform.rotation);
-            instantiatedObjects.Add(currentStation);
-            instantiatedObjects.Add(Instantiate(Bell, BellSpawnPoint.transform.position, Bell.transform.rotation));
+            // Colazione sana: juice station e toast station appaiono insieme, subito.
+            if (JuiceStation != null)
+            {
+                JuiceStation.SetActive(true);
+                instantiatedObjects.Add(JuiceStation);
+            }
+            if (ToastStation != null)
+            {
+                ToastStation.SetActive(true);
+                instantiatedObjects.Add(ToastStation);
+            }
         }
-        else
+        else if (SnackStation != null)
         {
-            currentStation = Instantiate(SnackStation, StationSpawnPoint.transform.position,StationSpawnPoint.transform.rotation);
-            instantiatedObjects.Add(currentStation);
+            // Percorso spuntino: gli oggetti dentro la Snack Station sono già pronti da mangiare
+            // (già taggati Food/Beverage e afferrabili), quindi basta tracciarli per sapere quando
+            // sono stati tutti consumati.
+            SnackStation.SetActive(true);
+            snackItems.AddRange(FindConsumables(SnackStation));
+            initialSnackItemCount = snackItems.Count;
+        }
+
+        if (Bell != null && BellSpawnPoint != null)
+        {
+            bellInstance = Instantiate(Bell, BellSpawnPoint.transform.position, Bell.transform.rotation);
+            instantiatedObjects.Add(bellInstance);
         }
 
         Destroy(BreakfastCanvas);
@@ -62,6 +125,17 @@ public class BreakfastTask : MonoBehaviour
             if (found != null) return found.gameObject;
         }
         return null;
+    }
+
+    private List<GameObject> FindConsumables(GameObject station)
+    {
+        var result = new List<GameObject>();
+        foreach (Transform t in station.GetComponentsInChildren<Transform>(true))
+        {
+            if (t.CompareTag("Food") || t.CompareTag("Beverage"))
+                result.Add(t.gameObject);
+        }
+        return result;
     }
 
     [ContextMenu("Set Juice Task Ready")]
@@ -86,24 +160,17 @@ public class BreakfastTask : MonoBehaviour
                         if (!mug.TryGetComponent<XRGrabInteractable>(out _)) mug.AddComponent<XRGrabInteractable>();
                         mug.tag = "Beverage";
                     }
-
-                    if(mug == null)
+                    else
                     {
-                            if (currentStation != null)
+                        // Il mug è stato bevuto (consumato): nascondi di nuovo la juice station.
+                        if (JuiceStation != null)
                         {
-                            instantiatedObjects.Remove(currentStation);
-                            Destroy(currentStation);
-                        }
-
-                        if (isHealthy)
-                        {
-                            currentStation = Instantiate(ToastStation);
-                            instantiatedObjects.Add(currentStation);
+                            instantiatedObjects.Remove(JuiceStation);
+                            JuiceStation.SetActive(false);
                         }
 
                         this.step++;
                     }
-
                 }
                 break;
             case 1:
@@ -116,15 +183,18 @@ public class BreakfastTask : MonoBehaviour
                         if (!toast.TryGetComponent<XRGrabInteractable>(out _)) toast.AddComponent<XRGrabInteractable>();
                         toast.tag = "Food";
                     }
-                    
-                    if(toast == null)
+                    else
                     {
-                        if (currentStation != null)
+                        // Il toast è stato mangiato: nascondi di nuovo la toast station e togli la campanella.
+                        if (ToastStation != null)
                         {
-                            instantiatedObjects.Remove(currentStation);
-                            instantiatedObjects.Remove(Bell);
-                            Destroy(currentStation);
-                            Destroy(Bell);
+                            instantiatedObjects.Remove(ToastStation);
+                            ToastStation.SetActive(false);
+                        }
+                        if (bellInstance != null)
+                        {
+                            instantiatedObjects.Remove(bellInstance);
+                            Destroy(bellInstance);
                         }
 
                         this.step++;
@@ -139,14 +209,24 @@ public class BreakfastTask : MonoBehaviour
         
         else
         {
-            instantiatedObjects.RemoveAll(obj => obj == null);
+            snackItems.RemoveAll(obj => obj == null);
+            int eaten = initialSnackItemCount - snackItems.Count;
 
-            if (instantiatedObjects.Count == 0)
+            // Non serve finire tutta la Snack Station: basta averne mangiati/bevuti almeno
+            // minSnackItemsToEat (o proprio tutti, se ce ne sono meno della soglia).
+            if (eaten >= minSnackItemsToEat || snackItems.Count == 0)
             {
+                if (SnackStation != null) SnackStation.SetActive(false);
+                if (bellInstance != null)
+                {
+                    instantiatedObjects.Remove(bellInstance);
+                    Destroy(bellInstance);
+                }
+
                 CompleteTask();
             }
         }
-        
+
     }
 
     public void CompleteTask()

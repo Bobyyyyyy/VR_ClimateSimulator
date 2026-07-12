@@ -36,7 +36,10 @@ public class RadioBehaviour : MonoBehaviour
 
     public void Play()
     {
-        if (audioSource.isPlaying) return;
+        // Ricontrolliamo sempre lo stato corrente a fine task: se la radio sta ancora
+        // trasmettendo la clip di uno stato precedente, va fermata prima di far partire
+        // quella giusta per lo stato attuale.
+        if (audioSource.isPlaying) audioSource.Stop();
 
         switch (TaskManager.Instance.current_state)
         {

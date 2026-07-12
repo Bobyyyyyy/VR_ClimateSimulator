@@ -14,6 +14,9 @@ public class VRLoadingOverlay : MonoBehaviour
     [Tooltip("Il lavoro non assegna punti: è solo una schermata di attesa tra colazione e cena")]
     public TaskData workTask;
 
+    [Tooltip("Canvas per andare a lavoro: visibile solo quando è il turno del task lavoro (colazione completata)")]
+    public GameObject doorCanvas;
+
     Slider loadingBar;
 
     Camera MainCamera;
@@ -26,6 +29,35 @@ public class VRLoadingOverlay : MonoBehaviour
     public void StartBusTravel() => StartCoroutine(LoadingSequence(15f));
     [ContextMenu("TaxiTravel")]
     public void StartCarTravel() => StartCoroutine(LoadingSequence(2f));
+
+    void Start()
+    {
+        UpdateDoorCanvasVisibility();
+
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.AddListener(OnTaskChanged);
+    }
+
+    void OnDestroy()
+    {
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
+    }
+
+    private void OnTaskChanged(TaskData newCurrentTask)
+    {
+        UpdateDoorCanvasVisibility();
+    }
+
+    private void UpdateDoorCanvasVisibility()
+    {
+        if (doorCanvas == null) return;
+
+        bool shouldShow = workTask != null && !workTask.isCompleted
+            && TaskManager.Instance != null && TaskManager.Instance.IsCurrentTask(workTask);
+
+        doorCanvas.SetActive(shouldShow);
+    }
 
     private IEnumerator LoadingSequence(float duration)
     {

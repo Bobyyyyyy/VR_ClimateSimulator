@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 8569561095166490108}
   - component: {fileID: 4913453942502800171}
   - component: {fileID: 2114858635557399563}
+  - component: {fileID: 9100692678774730080}
   m_Layer: 0
   m_Name: Soda
   m_TagString: Trash
@@ -393,3 +394,16 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9100692678774730080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336262599299898494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 0c1c7edbccb963f40b5115c3e46015cb, type: 2}

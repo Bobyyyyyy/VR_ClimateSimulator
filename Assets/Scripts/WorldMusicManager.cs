@@ -30,6 +30,25 @@ public class WorldMusicManager : MonoBehaviour
 
     void Start()
     {
+        UpdateForCurrentState();
+
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.AddListener(OnTaskChanged);
+    }
+
+    void OnDestroy()
+    {
+        if (TaskManager.Instance != null)
+            TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
+    }
+
+    // Richiamata ogni volta che un task finisce e si passa al successivo: ricontrolliamo
+    // lo stato attuale del mondo, così la musica resta coerente anche se non è cambiata
+    // soglia (onWorldGood/onWorldNeutral/onWorldBad non sarebbero scattati).
+    private void OnTaskChanged(TaskData newCurrentTask) => UpdateForCurrentState();
+
+    private void UpdateForCurrentState()
+    {
         if (TaskManager.Instance == null) return;
 
         switch (TaskManager.Instance.current_state)
@@ -62,6 +81,9 @@ public class WorldMusicManager : MonoBehaviour
     private void PlayClip(AudioClip clip)
     {
         if (clip == null || clip == currentClip) return;
+
+        // Ferma la traccia precedente prima di passare a quella nuova.
+        if (source.isPlaying) source.Stop();
 
         currentClip = clip;
         source.clip = clip;

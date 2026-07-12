@@ -369,6 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9147398223523161728}
+  - component: {fileID: 6392703135540172178}
   m_Layer: 0
   m_Name: Chips3
   m_TagString: Trash
@@ -393,3 +394,16 @@ Transform:
   - {fileID: 7855044964091321351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90.666016, y: 0, z: 0}
+--- !u!114 &6392703135540172178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686084443081862411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 0c1c7edbccb963f40b5115c3e46015cb, type: 2}

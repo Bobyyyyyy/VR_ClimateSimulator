@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802205731433585567}
+  - component: {fileID: 907883145581771206}
   m_Layer: 0
   m_Name: Paper
   m_TagString: Trash
@@ -302,3 +303,16 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &907883145581771206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319451033305584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 6d16e538ec32720468c1b64c6f305b41, type: 2}

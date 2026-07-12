@@ -280,6 +280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097903426688338975}
+  - component: {fileID: 8693448754041190512}
   m_Layer: 0
   m_Name: Cat Food
   m_TagString: Trash
@@ -303,3 +304,16 @@ Transform:
   - {fileID: 2613970563040543043}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 55.291, z: 0}
+--- !u!114 &8693448754041190512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229054874947552201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 0c1c7edbccb963f40b5115c3e46015cb, type: 2}

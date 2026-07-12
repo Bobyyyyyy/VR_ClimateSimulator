@@ -42,7 +42,19 @@ public class TaskManager : MonoBehaviour
 
     private int points = 0;
 
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        Instance = this;
+
+        // I TaskData sono ScriptableObject (asset di progetto): a differenza degli oggetti di
+        // scena, Unity NON li ripristina uscendo dalla Play Mode, quindi isCompleted resterebbe
+        // "true" da un test precedente anche in sessioni successive se non lo resettiamo qui.
+        if (activeTasks != null)
+        {
+            foreach (var task in activeTasks)
+                if (task != null) task.isCompleted = false;
+        }
+    }
 
     public int getPoints() => points;
 

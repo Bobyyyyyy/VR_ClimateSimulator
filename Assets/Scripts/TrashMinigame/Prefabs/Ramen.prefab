@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 674834790562249382}
   - component: {fileID: 3406232952358142922}
   - component: {fileID: 6432004755445767995}
+  - component: {fileID: 160845375477502153}
   m_Layer: 0
   m_Name: Ramen
   m_TagString: Trash
@@ -302,3 +303,16 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &160845375477502153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048404791810670580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 0c1c7edbccb963f40b5115c3e46015cb, type: 2}

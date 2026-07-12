@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DinnerTaskData
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
   taskName: Prepara la cena
-  description:
+  description: Ordina la cena, oppure cucina un hamburger passo dopo passo.
   isCompleted: 0

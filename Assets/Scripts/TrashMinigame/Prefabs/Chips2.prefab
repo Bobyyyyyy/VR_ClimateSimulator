@@ -101,9 +101,6 @@ GameObject:
   - component: {fileID: 2759965672493069390}
   - component: {fileID: 4154399458815686659}
   - component: {fileID: 3546723225853113686}
-  - component: {fileID: 9738901583572284}
-  - component: {fileID: 3925858621361939320}
-  - component: {fileID: 5615000111745898368}
   m_Layer: 0
   m_Name: Object_8
   m_TagString: Untagged
@@ -183,34 +180,65 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9738901583572284
-BoxCollider:
+--- !u!1 &3552549570268845171
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547589238922088460}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4417464452785391629}
+  - component: {fileID: 322237023740435929}
+  - component: {fileID: 5008528775772306828}
+  - component: {fileID: 8573469048534066958}
+  - component: {fileID: 7035850671853069860}
+  m_Layer: 0
+  m_Name: Chips2
+  m_TagString: Trash
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4417464452785391629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552549570268845171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.70710677}
+  m_LocalPosition: {x: -0.9825448, y: 0.0933, z: -0.05960331}
+  m_LocalScale: {x: 0.09150765, y: 0.09150765, z: 0.09150765}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7103967584679624862}
+  - {fileID: 2479819018808549644}
+  - {fileID: 1372144571347629038}
+  - {fileID: 2759965672493069390}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322237023740435929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552549570268845171}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.8810625, y: 0.3825875, z: 1.2652375}
-  m_Center: {x: -0.44053125, y: 0.19129375, z: -0.6326187}
---- !u!54 &3925858621361939320
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d29c0afd43b14d87a1334c907ac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashScript
+  data: {fileID: 11400000, guid: 0c1c7edbccb963f40b5115c3e46015cb, type: 2}
+--- !u!54 &5008528775772306828
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547589238922088460}
+  m_GameObject: {fileID: 3552549570268845171}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -231,13 +259,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5615000111745898368
+--- !u!114 &8573469048534066958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547589238922088460}
+  m_GameObject: {fileID: 3552549570268845171}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
@@ -360,41 +388,27 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
---- !u!1 &3552549570268845171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4417464452785391629}
-  m_Layer: 0
-  m_Name: Chips2
-  m_TagString: Trash
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4417464452785391629
-Transform:
+--- !u!65 &7035850671853069860
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552549570268845171}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: -0.9825448, y: 0.078957826, z: -0.05960331}
-  m_LocalScale: {x: 0.09150765, y: 0.09150765, z: 0.09150765}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7103967584679624862}
-  - {fileID: 2479819018808549644}
-  - {fileID: 1372144571347629038}
-  - {fileID: 2759965672493069390}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.90185034, y: 0.3872572, z: 1.2943337}
+  m_Center: {x: -0.43576407, y: 0.21224926, z: -0.6421419}
 --- !u!1 &8439874368928364835
 GameObject:
   m_ObjectHideFlags: 0

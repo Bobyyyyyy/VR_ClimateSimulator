@@ -7,6 +7,7 @@ public class ScoreHUD : MonoBehaviour
     public TextMeshProUGUI trashScoreText;
     public TextMeshProUGUI remainingTrashText;
     public TextMeshProUGUI currentTaskText;
+    public TextMeshProUGUI timerText;
 
     void Awake()
     {
@@ -38,6 +39,12 @@ public class ScoreHUD : MonoBehaviour
         {
             OnTrashScoreChanged(0);
         }
+
+        if (TimerManager.Instance != null)
+        {
+            TimerManager.Instance.onElapsedTimeChanged.AddListener(OnElapsedTimeChanged);
+            OnElapsedTimeChanged(TimerManager.Instance.ElapsedTime);
+        }
     }
 
     void OnDestroy()
@@ -52,6 +59,11 @@ public class ScoreHUD : MonoBehaviour
         {
             TrashTask.Instance.onSortingScoreChanged.RemoveListener(OnTrashScoreChanged);
             TrashTask.Instance.onRemainingTrashChanged.RemoveListener(OnRemainingTrashChanged);
+        }
+
+        if (TimerManager.Instance != null)
+        {
+            TimerManager.Instance.onElapsedTimeChanged.RemoveListener(OnElapsedTimeChanged);
         }
     }
 
@@ -77,5 +89,10 @@ public class ScoreHUD : MonoBehaviour
         currentTaskText.text = currentTask == null
             ? "Tutte le task completate!"
             : $"{currentTask.taskName}\n{currentTask.description}";
+    }
+
+    private void OnElapsedTimeChanged(float elapsedTime)
+    {
+        if (timerText != null) timerText.text = $"Tempo: {TimerManager.Instance.GetFormattedTime()}";
     }
 }

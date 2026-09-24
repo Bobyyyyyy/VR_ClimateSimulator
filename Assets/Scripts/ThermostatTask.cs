@@ -14,6 +14,9 @@ public class ThermostatTask : MonoBehaviour
         if (task != null && !task.isCompleted)
         {
             task.isCompleted = true;
+
+            ActionLogger.Instance?.LogAction(task.taskName, "Task completata", "Temperatura ideale raggiunta");
+
             TaskManager.Instance.UpdateTaskProgress(task);
             Destroy(this);
         }

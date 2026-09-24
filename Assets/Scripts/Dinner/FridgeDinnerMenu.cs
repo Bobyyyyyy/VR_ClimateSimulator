@@ -62,6 +62,9 @@ public class FridgeDinnerMenu : MonoBehaviour
     [ContextMenu("Ordina cena")]
     public void OrderDinner()
     {
+        ActionLogger.Instance?.LogAction(dinnerTask != null ? dinnerTask.taskName : "Cena", "Scelta cena",
+            "Percorso scelto=Ordina cena (pizza+bibita)");
+
         if (menuCanvas != null) menuCanvas.SetActive(false);
         if (recipeOnWall != null) recipeOnWall.SetActive(false);
 
@@ -87,12 +90,18 @@ public class FridgeDinnerMenu : MonoBehaviour
 
         dinnerTask.isCompleted = true;
         TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+
+        ActionLogger.Instance?.LogAction(dinnerTask.taskName, "Task completata", "");
+
         TaskManager.Instance.UpdateTaskProgress(dinnerTask);
     }
 
     [ContextMenu("Crea la cena")]
     public void MakeDinner()
     {
+        ActionLogger.Instance?.LogAction(dinnerTask != null ? dinnerTask.taskName : "Cena", "Scelta cena",
+            "Percorso scelto=Crea la cena (cucina)");
+
         if (menuCanvas != null) menuCanvas.SetActive(false);
         if (recipeOnWall != null) recipeOnWall.SetActive(true);
 

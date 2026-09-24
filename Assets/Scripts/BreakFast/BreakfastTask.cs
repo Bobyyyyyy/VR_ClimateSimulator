@@ -82,6 +82,9 @@ public class BreakfastTask : MonoBehaviour
     {
         this.isHealthy = isHealthy;
 
+        ActionLogger.Instance?.LogAction(task != null ? task.taskName : "Colazione", "Scelta colazione",
+            $"Percorso scelto={(isHealthy ? "sano (succo + toast)" : "spuntino")}");
+
         if (isHealthy)
         {
             // Colazione sana: juice station e toast station appaiono insieme, subito.
@@ -234,9 +237,12 @@ public class BreakfastTask : MonoBehaviour
         if (task == null || task.isCompleted) return;
         if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(task)) return;
 
-        Debug.Log("Task Completata!");
         task.isCompleted = true;
         TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+
+        ActionLogger.Instance?.LogAction(task.taskName, "Task completata",
+            $"Percorso={(isHealthy ? "sano" : "spuntino")}");
+
         TaskManager.Instance.UpdateTaskProgress(task);
     }
 

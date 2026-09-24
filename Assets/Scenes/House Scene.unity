@@ -13382,6 +13382,9 @@ GameObject:
   - component: {fileID: 982706929929099217}
   - component: {fileID: 3140707834417960194}
   - component: {fileID: 9123456789012345605}
+  - component: {fileID: 9123456789012345606}
+  - component: {fileID: 9123456789012345607}
+  - component: {fileID: 9123456789012345608}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13404,6 +13407,44 @@ MonoBehaviour:
   onElapsedTimeChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9123456789012345606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576603587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d4e2a1b3f4407a9c1e5f6a8b9d0e2f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::ActionLogger
+  fileName: session_log.csv
+--- !u!114 &9123456789012345607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576603587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f8a2c9b7d64018a5c3f2e9b1d8a047, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::UsernamePrompt
+  distanceFromCamera: 1
+--- !u!114 &9123456789012345608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576603587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a4b8d6c3e94a2f8b7d1c6e9a3f5b02, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::RayInteractorDebugLogger
 --- !u!114 &576603588
 MonoBehaviour:
   m_ObjectHideFlags: 0

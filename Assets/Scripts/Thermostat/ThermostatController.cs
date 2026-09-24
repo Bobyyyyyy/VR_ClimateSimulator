@@ -44,7 +44,8 @@ public class ThermostatController : MonoBehaviour
         if(currentTemperature + value < maxTemp )
         {
             SetTemperature(currentTemperature+value);
-            checkForIdealTemperature(); 
+            LogAdjustment(value);
+            checkForIdealTemperature();
         }
 
     }
@@ -54,9 +55,19 @@ public class ThermostatController : MonoBehaviour
         if (currentTemperature - value > minTemp )
         {
             SetTemperature(currentTemperature-value);
-            checkForIdealTemperature();   
+            LogAdjustment(-value);
+            checkForIdealTemperature();
         }
 
+    }
+
+    private void LogAdjustment(float delta)
+    {
+        string taskName = ThermostatTask.Instance != null && ThermostatTask.Instance.task != null
+            ? ThermostatTask.Instance.task.taskName : "Termostato";
+
+        ActionLogger.Instance?.LogAction(taskName, "Regolazione temperatura",
+            $"Variazione={delta:F1} | TemperaturaAttuale={currentTemperature:F1}");
     }
 
     void UpdateDisplay(float temp)

@@ -26,9 +26,18 @@ public class VRLoadingOverlay : MonoBehaviour
     readonly List<GraphicRaycaster> disabledRaycasters = new List<GraphicRaycaster>();
 
     [ContextMenu("BusTravel")]
-    public void StartBusTravel() => StartCoroutine(LoadingSequence(15f));
+    public void StartBusTravel()
+    {
+        ActionLogger.Instance?.LogAction(workTask != null ? workTask.taskName : "Lavoro", "Scelta trasporto", "Mezzo scelto=Autobus");
+        StartCoroutine(LoadingSequence(15f));
+    }
+
     [ContextMenu("TaxiTravel")]
-    public void StartCarTravel() => StartCoroutine(LoadingSequence(2f));
+    public void StartCarTravel()
+    {
+        ActionLogger.Instance?.LogAction(workTask != null ? workTask.taskName : "Lavoro", "Scelta trasporto", "Mezzo scelto=Auto");
+        StartCoroutine(LoadingSequence(2f));
+    }
 
     void Start()
     {
@@ -126,6 +135,9 @@ public class VRLoadingOverlay : MonoBehaviour
         if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(workTask)) return;
 
         workTask.isCompleted = true;
+
+        ActionLogger.Instance?.LogAction(workTask.taskName, "Task completata", "");
+
         TaskManager.Instance.UpdateTaskProgress(workTask); // 0 punti: è solo una schermata di attesa
     }
 }

@@ -17,10 +17,15 @@ public class TimerManager : MonoBehaviour
 
     void Start()
     {
-        IsRunning = true;
-
+        // IsRunning resta false finché non viene chiamato BeginSession(): il timer parte solo
+        // dopo che l'utente ha confermato il proprio username (vedi UsernamePrompt.OnConfirm).
         if (TaskManager.Instance != null)
             TaskManager.Instance.onTaskChanged.AddListener(OnTaskChanged);
+    }
+
+    public void BeginSession()
+    {
+        IsRunning = true;
     }
 
     void OnDestroy()

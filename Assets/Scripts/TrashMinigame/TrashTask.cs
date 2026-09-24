@@ -130,10 +130,14 @@ public class TrashTask : MonoBehaviour
 
         trashTask.isCompleted = true;
 
-        if (sortingScore >= sortingScoreThreshold)
+        bool passed = sortingScore >= sortingScoreThreshold;
+        if (passed)
             TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
         else
             TaskManager.Instance.removePoints(TaskManager.Instance.pointsPerChoice);
+
+        ActionLogger.Instance?.LogAction(trashTask.taskName, "Task completata",
+            $"PunteggioDifferenziazione={sortingScore} | Soglia={sortingScoreThreshold} | Superata={(passed ? "Si" : "No")}");
 
         TaskManager.Instance.UpdateTaskProgress(trashTask);
         Destroy(this);

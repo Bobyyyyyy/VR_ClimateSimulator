@@ -40,6 +40,10 @@ public class LightChoiceTask : MonoBehaviour
             TaskManager.Instance.removePoints(TaskManager.Instance.pointsPerChoice);
 
         task.isCompleted = true;
+
+        ActionLogger.Instance?.LogAction(task.taskName, "Task completata",
+            $"Luce scelta={(positive ? "naturale (tapparelle)" : "artificiale (interruttore)")}");
+
         TaskManager.Instance.UpdateTaskProgress(task);
 
         LockInteractions();

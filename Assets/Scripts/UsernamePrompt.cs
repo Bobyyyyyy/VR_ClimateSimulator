@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 // Mostra, all'avvio della scena, un pannello world-space centrato davanti alla camera con un
 // campo di testo e una tastiera virtuale cliccabile (via ray XR o mouse) per digitare il proprio
@@ -325,7 +326,18 @@ public class UsernamePrompt : MonoBehaviour
         ActionLogger.Instance?.BeginSession(username);
         TimerManager.Instance?.BeginSession();
 
+        DisableRayInteractors();
+
         Destroy(canvasRoot);
         Destroy(this);
+    }
+
+    // Il laser serve solo per digitare lo username su questa tastiera virtuale: da qui in poi
+    // l'interazione con la UI (bottoni del termostato, menu cena, ecc.) avviene toccandola
+    // direttamente con la mano/controller (XRPokeInteractor), senza un raggio visibile.
+    private void DisableRayInteractors()
+    {
+        foreach (XRRayInteractor ray in FindObjectsByType<XRRayInteractor>(FindObjectsSortMode.None))
+            ray.gameObject.SetActive(false);
     }
 }

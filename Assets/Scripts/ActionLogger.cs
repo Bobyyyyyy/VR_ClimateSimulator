@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using UnityEngine;
@@ -19,7 +20,15 @@ public class ActionLogger : MonoBehaviour
 
     public string Username { get; private set; } = "Sconosciuto";
 
+    // Sparato quando l'ultima task della giornata (Cena) si completa: TaskDurations a quel
+    // punto contiene già la durata di ogni task, comprese quella appena finita.
+    public event Action OnSessionComplete;
+
+    private readonly List<(string TaskName, float Seconds)> taskDurations = new List<(string, float)>();
+    public IReadOnlyList<(string TaskName, float Seconds)> TaskDurations => taskDurations;
+
     private string filePath;
+    private string currentTaskName = "";
     private float currentTaskStartTime;
     private bool sessionStarted = false;
 
@@ -75,9 +84,17 @@ public class ActionLogger : MonoBehaviour
     {
         if (!sessionStarted) return;
 
-        string taskName = newTask != null ? newTask.taskName : "Giornata completata";
+        // Il task che sta per lasciare il posto al successivo (o, se newTask è null, l'ultimo
+        // della giornata appena completato) va registrato con la sua durata finale.
+        if (!string.IsNullOrEmpty(currentTaskName))
+            taskDurations.Add((currentTaskName, ElapsedInCurrentTask()));
+
+        currentTaskName = newTask != null ? newTask.taskName : "Giornata completata";
         currentTaskStartTime = Time.time;
-        LogAction(taskName, "Task avviata", "");
+        LogAction(currentTaskName, "Task avviata", "");
+
+        if (newTask == null)
+            OnSessionComplete?.Invoke();
     }
 
     // Secondi trascorsi dall'inizio del task correntemente attivo: usato per popolare

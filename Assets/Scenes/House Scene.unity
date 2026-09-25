@@ -13385,6 +13385,8 @@ GameObject:
   - component: {fileID: 9123456789012345606}
   - component: {fileID: 9123456789012345607}
   - component: {fileID: 9123456789012345608}
+  - component: {fileID: 9123456789012345609}
+  - component: {fileID: 9123456789012345610}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13445,6 +13447,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a4b8d6c3e94a2f8b7d1c6e9a3f5b02, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::RayInteractorDebugLogger
+--- !u!114 &9123456789012345609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576603587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8df70d80bd90fa30a38b614b6959208, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::ThermostatTask
+  task: {fileID: 11400000, guid: bcf1563509e1587d2a0e887c5ee2155a, type: 2}
+--- !u!114 &9123456789012345610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576603587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b7c1a9e6f34825b0c8d2e5a7f19c36, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::SessionSummaryHUD
+  distanceFromCamera: 1.2
 --- !u!114 &576603588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13537,6 +13565,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 262932b1a1fa4116890ba3253b9ab22f, type: 2}
   - {fileID: 11400000, guid: e66471c58c761d1fab4fda626c905dcb, type: 2}
   - {fileID: 11400000, guid: 49f18cda94b21014f99f29dc294f297d, type: 2}
+  - {fileID: 11400000, guid: bcf1563509e1587d2a0e887c5ee2155a, type: 2}
   - {fileID: 11400000, guid: 173490c309e5496fabf8709aca286f4f, type: 2}
   - {fileID: 11400000, guid: 80902b9d2efdb4a63adffd9c3391adf6, type: 2}
   completedTasks: 0

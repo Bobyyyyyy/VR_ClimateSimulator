@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b95fb4668447b03bc099564d39d822, type: 3}
   m_Name: Thermostat
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Thermostat
-  description: test
+  taskName: Termostato
+  description: 'Prima di uscire per andare a lavoro, decidi cosa fare del termostato:
+    spegnilo per risparmiare energia, oppure lascialo acceso per trovare la casa
+    calda al tuo ritorno.'
   isCompleted: 0

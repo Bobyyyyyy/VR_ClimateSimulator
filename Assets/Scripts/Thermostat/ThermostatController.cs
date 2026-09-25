@@ -10,7 +10,6 @@ public class ThermostatController : MonoBehaviour
     
     public TextMeshProUGUI displayScreen;
     float targetTemperature = 19f;
-    public Vector2 idealRange;
     public float currentTemperature;
     
     float minTemp = 0;
@@ -45,7 +44,6 @@ public class ThermostatController : MonoBehaviour
         {
             SetTemperature(currentTemperature+value);
             LogAdjustment(value);
-            checkForIdealTemperature();
         }
 
     }
@@ -56,10 +54,15 @@ public class ThermostatController : MonoBehaviour
         {
             SetTemperature(currentTemperature-value);
             LogAdjustment(-value);
-            checkForIdealTemperature();
         }
 
     }
+
+    // Collegati ai due bottoni HUD del termostato (task giornata): la scelta è binaria,
+    // esattamente come le altre task del giorno (luce, colazione, cena, lavoro).
+    public void TurnOff() => ThermostatTask.Instance?.TurnOff();
+
+    public void LeaveOn() => ThermostatTask.Instance?.LeaveOn();
 
     private void LogAdjustment(float delta)
     {
@@ -100,14 +103,6 @@ public class ThermostatController : MonoBehaviour
             }
         }
     
-    }
-
-    void checkForIdealTemperature()
-    {
-        if (currentTemperature < idealRange[0] && currentTemperature > idealRange[1] )
-        {
-            ThermostatTask.Instance.CompleteTask();
-        }
     }
 
     private void Start()

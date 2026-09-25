@@ -2,23 +2,37 @@ using UnityEngine;
 
 public class ThermostatTask : MonoBehaviour
 {
-
     public static ThermostatTask Instance;
 
     public TaskData task;
 
-        void Awake() => Instance = this;
+    private bool choiceMade = false;
 
-    public void CompleteTask()
-        {
-        if (task != null && !task.isCompleted)
-        {
-            task.isCompleted = true;
+    void Awake() => Instance = this;
 
-            ActionLogger.Instance?.LogAction(task.taskName, "Task completata", "Temperatura ideale raggiunta");
+    // Collegato al bottone HUD "Spegni" sul termostato: scelta ecologica.
+    public void TurnOff() => MakeChoice(ecological: true);
 
-            TaskManager.Instance.UpdateTaskProgress(task);
-            Destroy(this);
-        }
+    // Collegato al bottone HUD "Lascialo acceso" sul termostato: scelta non ecologica.
+    public void LeaveOn() => MakeChoice(ecological: false);
+
+    private void MakeChoice(bool ecological)
+    {
+        if (choiceMade || task == null || TaskManager.Instance == null) return;
+        if (!TaskManager.Instance.IsCurrentTask(task)) return;
+
+        choiceMade = true;
+
+        if (ecological)
+            TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+        else
+            TaskManager.Instance.removePoints(TaskManager.Instance.pointsPerChoice);
+
+        task.isCompleted = true;
+
+        ActionLogger.Instance?.LogAction(task.taskName, "Task completata",
+            $"Scelta termostato={(ecological ? "spento (ecologica)" : "lasciato acceso (non ecologica)")}");
+
+        TaskManager.Instance.UpdateTaskProgress(task);
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 // Mostra, all'avvio della scena, un pannello world-space centrato davanti alla camera con un
 // campo di testo e una tastiera virtuale cliccabile (via ray XR o mouse) per digitare il proprio
@@ -32,6 +34,7 @@ public class UsernamePrompt : MonoBehaviour
     void Awake()
     {
         BuildUI();
+        DisableLocomotion();
     }
 
     private void BuildUI()
@@ -42,7 +45,11 @@ public class UsernamePrompt : MonoBehaviour
         Canvas canvas = canvasRoot.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.WorldSpace;
         canvasRoot.AddComponent<CanvasScaler>();
-        canvasRoot.AddComponent<GraphicRaycaster>();
+        // TrackedDeviceGraphicRaycaster (non il GraphicRaycaster standard) è quello che permette
+        // agli XR Ray/Poke Interactor di generare eventi UI (click) sui Button del canvas: è lo
+        // stesso componente già usato dal canvas del Thermostat per l'interazione in VR.
+        TrackedDeviceGraphicRaycaster raycasterInit = canvasRoot.AddComponent<TrackedDeviceGraphicRaycaster>();
+        raycasterInit.ignoreReversedGraphics = false;
 
         canvasRect = canvasRoot.GetComponent<RectTransform>();
 
@@ -78,9 +85,9 @@ public class UsernamePrompt : MonoBehaviour
         inputField.Select();
         inputField.ActivateInputField();
 
-        GraphicRaycaster raycaster = canvasRoot.GetComponent<GraphicRaycaster>();
+        TrackedDeviceGraphicRaycaster raycaster = canvasRoot.GetComponent<TrackedDeviceGraphicRaycaster>();
         Debug.Log($"[UsernamePrompt] Pannello costruito. canvas.renderMode={canvas.renderMode}, "
-            + $"worldPos={canvasRect.position}, GraphicRaycaster presente={raycaster != null}, "
+            + $"worldPos={canvasRect.position}, TrackedDeviceGraphicRaycaster presente={raycaster != null}, "
             + $"EventSystem.current={(UnityEngine.EventSystems.EventSystem.current != null ? UnityEngine.EventSystems.EventSystem.current.name : "NESSUNO")}");
     }
 
@@ -327,9 +334,25 @@ public class UsernamePrompt : MonoBehaviour
         TimerManager.Instance?.BeginSession();
 
         DisableRayInteractors();
+        EnableLocomotion();
 
         Destroy(canvasRoot);
         Destroy(this);
+    }
+
+    // Finché l'username non è confermato il giocatore è fermo davanti al pannello: disabilitare
+    // tutti i LocomotionProvider (move/turn/teleport/gravity) impedisce di allontanarsi o
+    // vagare per la stanza mentre sta ancora scrivendo il proprio nome.
+    private void DisableLocomotion()
+    {
+        foreach (LocomotionProvider provider in FindObjectsByType<LocomotionProvider>(FindObjectsSortMode.None))
+            provider.enabled = false;
+    }
+
+    private void EnableLocomotion()
+    {
+        foreach (LocomotionProvider provider in FindObjectsByType<LocomotionProvider>(FindObjectsSortMode.None))
+            provider.enabled = true;
     }
 
     // Il laser serve solo per digitare lo username su questa tastiera virtuale: da qui in poi

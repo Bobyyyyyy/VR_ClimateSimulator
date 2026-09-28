@@ -18,7 +18,7 @@ public class ActionLogger : MonoBehaviour
     [Tooltip("Nome del file unico in cui si accumulano tutte le sessioni, nella cartella Logs/ accanto ad Assets (root del progetto in Editor, accanto all'eseguibile in build)")]
     public string fileName = "results_log.csv";
 
-    public string Username { get; private set; } = "Sconosciuto";
+    public string Username { get; private set; } = "Unknown";
 
     // Sparato quando l'ultima task della giornata (Cena) si completa: TaskDurations a quel
     // punto contiene già la durata di ogni task, comprese quella appena finita.
@@ -75,7 +75,7 @@ public class ActionLogger : MonoBehaviour
     // registrato come "avviato" solo adesso, non prima che l'utente si sia identificato.
     public void BeginSession(string username)
     {
-        Username = string.IsNullOrEmpty(username) ? "Sconosciuto" : username;
+        Username = string.IsNullOrEmpty(username) ? "Unknown" : username;
         sessionStarted = true;
         OnTaskChanged(TaskManager.Instance != null ? TaskManager.Instance.CurrentTask : null);
     }
@@ -89,7 +89,7 @@ public class ActionLogger : MonoBehaviour
         if (!string.IsNullOrEmpty(currentTaskName))
             taskDurations.Add((currentTaskName, ElapsedInCurrentTask()));
 
-        currentTaskName = newTask != null ? newTask.taskName : "Giornata completata";
+        currentTaskName = newTask != null ? newTask.taskName : "Day completed";
         currentTaskStartTime = Time.time;
         LogAction(currentTaskName, "Task avviata", "");
 

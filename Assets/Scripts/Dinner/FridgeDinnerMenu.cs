@@ -62,7 +62,7 @@ public class FridgeDinnerMenu : MonoBehaviour
     [ContextMenu("Ordina cena")]
     public void OrderDinner()
     {
-        ActionLogger.Instance?.LogAction(dinnerTask != null ? dinnerTask.taskName : "Cena", "Scelta cena",
+        ActionLogger.Instance?.LogAction(dinnerTask != null ? dinnerTask.taskName : "Dinner", "Scelta cena",
             "Percorso scelto=Ordina cena (pizza+bibita)");
 
         if (menuCanvas != null) menuCanvas.SetActive(false);
@@ -99,7 +99,7 @@ public class FridgeDinnerMenu : MonoBehaviour
     [ContextMenu("Crea la cena")]
     public void MakeDinner()
     {
-        ActionLogger.Instance?.LogAction(dinnerTask != null ? dinnerTask.taskName : "Cena", "Scelta cena",
+        ActionLogger.Instance?.LogAction(dinnerTask != null ? dinnerTask.taskName : "Dinner", "Scelta cena",
             "Percorso scelto=Crea la cena (cucina)");
 
         if (menuCanvas != null) menuCanvas.SetActive(false);

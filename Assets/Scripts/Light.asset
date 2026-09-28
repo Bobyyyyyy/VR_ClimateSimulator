@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b95fb4668447b03bc099564d39d822, type: 3}
   m_Name: Light
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Scelta illuminazione
-  description: Apri le tapparelle per la luce naturale, o accendi l'interruttore
-    per la luce artificiale.
+  taskName: Light choice
+  description: Open the shutters for natural light, or turn on the switch for artificial
+    light.
   isCompleted: 0

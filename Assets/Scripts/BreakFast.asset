@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b95fb4668447b03bc099564d39d822, type: 3}
   m_Name: BreakFast
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Colazione
-  description: Scegli se fare una colazione sana o uno spuntino, poi mangia quello che hai scelto.
+  taskName: Breakfast
+  description: Choose whether to have a healthy breakfast or a snack, then eat what
+    you chose.
   isCompleted: 0

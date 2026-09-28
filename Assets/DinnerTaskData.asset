@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b95fb4668447b03bc099564d39d822, type: 3}
   m_Name: DinnerTaskData
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Prepara la cena
-  description: Ordina la cena, oppure cucina un hamburger passo dopo passo.
+  taskName: Make dinner
+  description: Order dinner, or cook a burger step by step.
   isCompleted: 0

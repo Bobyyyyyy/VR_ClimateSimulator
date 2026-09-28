@@ -57,11 +57,11 @@ public class SessionSummaryHUD : MonoBehaviour
 
         float cursorY = -30f;
 
-        cursorY = CreateLabel(panel.transform, cursorY, 44f, "Giornata completata", 32, FontStyles.Bold);
+        cursorY = CreateLabel(panel.transform, cursorY, 44f, "Day completed", 32, FontStyles.Bold);
         cursorY -= SectionGap;
 
-        string username = ActionLogger.Instance != null ? ActionLogger.Instance.Username : "Sconosciuto";
-        cursorY = CreateLabel(panel.transform, cursorY, 36f, $"Utente: {username}", 26, FontStyles.Normal);
+        string username = ActionLogger.Instance != null ? ActionLogger.Instance.Username : "Unknown";
+        cursorY = CreateLabel(panel.transform, cursorY, 36f, $"User: {username}", 26, FontStyles.Normal);
         cursorY -= SectionGap;
 
         float totalSeconds = 0f;
@@ -76,7 +76,7 @@ public class SessionSummaryHUD : MonoBehaviour
         }
 
         cursorY -= SectionGap;
-        cursorY = CreateLabel(panel.transform, cursorY, 40f, $"Tempo totale: {FormatTime(totalSeconds)}", 26, FontStyles.Bold);
+        cursorY = CreateLabel(panel.transform, cursorY, 40f, $"Total time: {FormatTime(totalSeconds)}", 26, FontStyles.Bold);
 
         canvasRect.sizeDelta = new Vector2(PanelWidth, -cursorY + 30f);
     }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b95fb4668447b03bc099564d39d822, type: 3}
   m_Name: Work
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Vai al lavoro
-  description: Avvicinati alla porta della camera da letto per andare a lavoro.
+  taskName: Go to work
+  description: Go to the bedroom door to head to work.
   isCompleted: 0

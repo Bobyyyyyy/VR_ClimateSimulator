@@ -100,7 +100,7 @@ public class UsernamePrompt : MonoBehaviour
         SetTopAnchored(titleRect, cursorY, new Vector2(PanelWidth - 40f, height));
 
         TextMeshProUGUI titleText = title.AddComponent<TextMeshProUGUI>();
-        titleText.text = "Inserisci il tuo username";
+        titleText.text = "Enter your username";
         titleText.fontSize = 28;
         titleText.alignment = TextAlignmentOptions.Center;
         titleText.color = Color.white;
@@ -190,7 +190,7 @@ public class UsernamePrompt : MonoBehaviour
 
         // Riga 4: barra spaziatrice, larga quanto l'intera tastiera
         float spaceWidth = RowKeyWidth(Row1.Length) * Row1.Length + (Row1.Length - 1) * KeyGap;
-        CreateKey(parent, " ", new Vector2(0f, cursorY), new Vector2(spaceWidth, KeyHeight), () => AppendChar(" "), "Spazio");
+        CreateKey(parent, " ", new Vector2(0f, cursorY), new Vector2(spaceWidth, KeyHeight), () => AppendChar(" "), "Space");
         cursorY -= KeyHeight + SectionGap;
 
         return cursorY;
@@ -268,7 +268,7 @@ public class UsernamePrompt : MonoBehaviour
         buttonTextRect.offsetMin = Vector2.zero;
         buttonTextRect.offsetMax = Vector2.zero;
         TextMeshProUGUI buttonText = buttonTextGO.AddComponent<TextMeshProUGUI>();
-        buttonText.text = "Conferma";
+        buttonText.text = "Confirm";
         buttonText.fontSize = 26;
         buttonText.alignment = TextAlignmentOptions.Center;
         buttonText.color = Color.white;
@@ -328,7 +328,7 @@ public class UsernamePrompt : MonoBehaviour
         Debug.Log($"[UsernamePrompt] Conferma cliccata. Testo nel campo: '{inputField.text}'");
 
         string entered = inputField.text.Trim();
-        string username = string.IsNullOrEmpty(entered) ? "Sconosciuto" : entered;
+        string username = string.IsNullOrEmpty(entered) ? "Unknown" : entered;
 
         ActionLogger.Instance?.BeginSession(username);
         TimerManager.Instance?.BeginSession();

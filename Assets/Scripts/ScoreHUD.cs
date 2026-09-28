@@ -69,17 +69,17 @@ public class ScoreHUD : MonoBehaviour
 
     private void OnGeneralScoreChanged(int points)
     {
-        if (generalScoreText != null) generalScoreText.text = $"Punteggio: {points}";
+        if (generalScoreText != null) generalScoreText.text = $"Score: {points}";
     }
 
     private void OnTrashScoreChanged(int score)
     {
-        if (trashScoreText != null) trashScoreText.text = $"Spazzatura: {score}";
+        if (trashScoreText != null) trashScoreText.text = $"Trash: {score}";
     }
 
     private void OnRemainingTrashChanged(int remaining)
     {
-        if (remainingTrashText != null) remainingTrashText.text = $"Rifiuti rimasti: {remaining}";
+        if (remainingTrashText != null) remainingTrashText.text = $"Remaining trash: {remaining}";
     }
 
     private void OnCurrentTaskChanged(TaskData currentTask)
@@ -87,12 +87,12 @@ public class ScoreHUD : MonoBehaviour
         if (currentTaskText == null) return;
 
         currentTaskText.text = currentTask == null
-            ? "Tutte le task completate!"
+            ? "All tasks completed!"
             : $"{currentTask.taskName}\n{currentTask.description}";
     }
 
     private void OnElapsedTimeChanged(float elapsedTime)
     {
-        if (timerText != null) timerText.text = $"Tempo: {TimerManager.Instance.GetFormattedTime()}";
+        if (timerText != null) timerText.text = $"Time: {TimerManager.Instance.GetFormattedTime()}";
     }
 }

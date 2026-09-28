@@ -17,7 +17,7 @@ public class BinDetector : MonoBehaviour
         TrashScript trashScript = collidedObject.GetComponent<TrashScript>();
         TrashType? actualType = trashScript != null && trashScript.data != null ? trashScript.data.type : (TrashType?)null;
         string taskName = TrashTask.Instance != null && TrashTask.Instance.trashTask != null
-            ? TrashTask.Instance.trashTask.taskName : "Spazzatura";
+            ? TrashTask.Instance.trashTask.taskName : "Trash";
 
         if (BinType == TrashType.undifferentiated)
         {

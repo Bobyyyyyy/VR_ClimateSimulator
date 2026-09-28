@@ -28,14 +28,14 @@ public class VRLoadingOverlay : MonoBehaviour
     [ContextMenu("BusTravel")]
     public void StartBusTravel()
     {
-        ActionLogger.Instance?.LogAction(workTask != null ? workTask.taskName : "Lavoro", "Scelta trasporto", "Mezzo scelto=Autobus");
+        ActionLogger.Instance?.LogAction(workTask != null ? workTask.taskName : "Work", "Scelta trasporto", "Mezzo scelto=Autobus");
         StartCoroutine(LoadingSequence(15f));
     }
 
     [ContextMenu("TaxiTravel")]
     public void StartCarTravel()
     {
-        ActionLogger.Instance?.LogAction(workTask != null ? workTask.taskName : "Lavoro", "Scelta trasporto", "Mezzo scelto=Auto");
+        ActionLogger.Instance?.LogAction(workTask != null ? workTask.taskName : "Work", "Scelta trasporto", "Mezzo scelto=Auto");
         StartCoroutine(LoadingSequence(2f));
     }
 

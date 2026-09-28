@@ -82,7 +82,7 @@ public class BreakfastTask : MonoBehaviour
     {
         this.isHealthy = isHealthy;
 
-        ActionLogger.Instance?.LogAction(task != null ? task.taskName : "Colazione", "Scelta colazione",
+        ActionLogger.Instance?.LogAction(task != null ? task.taskName : "Breakfast", "Scelta colazione",
             $"Percorso scelto={(isHealthy ? "sano (succo + toast)" : "spuntino")}");
 
         if (isHealthy)

@@ -101,7 +101,7 @@ public class ThermostatController : MonoBehaviour
     private void LogAdjustment(float delta)
     {
         string taskName = ThermostatTask.Instance != null && ThermostatTask.Instance.task != null
-            ? ThermostatTask.Instance.task.taskName : "Termostato";
+            ? ThermostatTask.Instance.task.taskName : "Thermostat";
 
         ActionLogger.Instance?.LogAction(taskName, "Regolazione temperatura",
             $"Variazione={delta:F1} | TemperaturaAttuale={currentTemperature:F1}");

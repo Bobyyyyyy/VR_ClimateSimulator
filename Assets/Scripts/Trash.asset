@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b95fb4668447b03bc099564d39d822, type: 3}
   m_Name: Trash
   m_EditorClassIdentifier: Assembly-CSharp::TaskData
-  taskName: Differenziata
-  description: "Smista tutti i rifiuti nel cestino giusto (vetro, carta, plastica)
-    anzich\xE9 buttarli nell'indifferenziata."
+  taskName: Recycling
+  description: Sort all the trash into the correct bin (glass, paper, plastic) instead
+    of throwing it in the general waste.
   isCompleted: 0

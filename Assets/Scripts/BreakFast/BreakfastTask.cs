@@ -238,7 +238,13 @@ public class BreakfastTask : MonoBehaviour
         if (TaskManager.Instance != null && !TaskManager.Instance.IsCurrentTask(task)) return;
 
         task.isCompleted = true;
-        TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+
+        // Spuntino = scelta poco sana/ecologica: toglie punti invece di darne, come le altre
+        // task binarie del giorno (termostato, luce).
+        if (isHealthy)
+            TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
+        else
+            TaskManager.Instance.removePoints(TaskManager.Instance.pointsPerChoice);
 
         ActionLogger.Instance?.LogAction(task.taskName, "Task completata",
             $"Percorso={(isHealthy ? "sano" : "spuntino")}");

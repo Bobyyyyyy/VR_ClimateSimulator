@@ -14,6 +14,12 @@ public class RadioBehaviour : MonoBehaviour
     [Header("Musica di sottofondo da abbassare mentre parla la radio")]
     public WorldMusicManager musicManager;
 
+    // Tiene traccia dell'ultimo stato per cui la radio ha effettivamente parlato: onTaskChanged
+    // scatta ad ogni singolo task, non solo quando cambia lo stato del mondo, quindi senza
+    // questo controllo la radio (e il conseguente ducking della musica) ripartirebbe da capo
+    // anche restando nello stesso stato.
+    private World_State? lastPlayedState = null;
+
     void Start()
     {
         if (TaskManager.Instance != null)
@@ -29,6 +35,9 @@ public class RadioBehaviour : MonoBehaviour
     // Richiamata ogni volta che un task finisce e si passa al successivo.
     private void OnTaskChanged(TaskData newCurrentTask)
     {
+        if (TaskManager.Instance == null) return;
+        if (lastPlayedState.HasValue && lastPlayedState.Value == TaskManager.Instance.current_state) return;
+
         Play();
     }
 
@@ -36,6 +45,8 @@ public class RadioBehaviour : MonoBehaviour
 
     public void Play()
     {
+        lastPlayedState = TaskManager.Instance.current_state;
+
         // Ricontrolliamo sempre lo stato corrente a fine task: se la radio sta ancora
         // trasmettendo la clip di uno stato precedente, va fermata prima di far partire
         // quella giusta per lo stato attuale.

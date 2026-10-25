@@ -107,3 +107,13 @@ InitTestScene*.unity*
 /docs/*.aux
 /docs/*.log
 /docs/*.out
+
+# Editor and OS files
+.vscode/
+.DS_Store
+/docs/*.fdb_latexmk
+/docs/*.fls
+/docs/*.synctex.gz
+/docs/*.toc
+/docs/*.bbl
+/docs/*.blg

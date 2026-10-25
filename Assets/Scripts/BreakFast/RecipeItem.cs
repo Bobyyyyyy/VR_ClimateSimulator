@@ -20,7 +20,7 @@ public class RecipeItem : MonoBehaviour
         }
         if (checkbox != null)
         {
-            checkbox.interactable = false;  // niente click, solo visuale
+            checkbox.interactable = false;
             checkbox.isOn = false;
         }
     }

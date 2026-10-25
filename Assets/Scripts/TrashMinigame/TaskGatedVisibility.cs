@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// Nasconde un oggetto finché un task specifico non è completato (poi resta visibile).
 public class TaskGatedVisibility : MonoBehaviour
 {
     [Tooltip("Il task che deve essere completato prima che l'oggetto diventi visibile")]

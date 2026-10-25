@@ -38,9 +38,6 @@ public class TrashTask : MonoBehaviour
 
     private int sortingScore = 0;
 
-    /// <summary>
-    /// Counts the remaining trash in scene
-    /// </summary>
     int remainingTrash;
 
     private bool hasBegun = false;
@@ -63,8 +60,6 @@ public class TrashTask : MonoBehaviour
 
     private void OnTaskChanged(TaskData _) => TryBeginIfCurrent();
 
-    // La task spazzatura parte da sola appena diventa quella corrente (luce completata),
-    // stesso pattern di TaskGatedVisibility/BreakfastTask per mostrare/attivare contenuti a turno.
     private void TryBeginIfCurrent()
     {
         if (hasBegun || trashTask == null || trashTask.isCompleted) return;

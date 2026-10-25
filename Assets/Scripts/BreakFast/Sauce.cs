@@ -32,7 +32,6 @@ public class SauceBottle : MonoBehaviour
 
     private void OnActivated(ActivateEventArgs args)
     {
-        // Effetti visivi/sonori sempre, anche a vuoto
         if (sauceParticles != null) sauceParticles.Play();
         if (sauceSound != null) sauceSound.Play();
 

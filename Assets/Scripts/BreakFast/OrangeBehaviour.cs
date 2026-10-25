@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OrangeBehaviour : MonoBehaviour
 {
-    public GameObject slicedOrangePrefab; // Assign your 2-half model here
+    public GameObject slicedOrangePrefab;
     
     [ContextMenu("Test Slice")]
     public void Slice()

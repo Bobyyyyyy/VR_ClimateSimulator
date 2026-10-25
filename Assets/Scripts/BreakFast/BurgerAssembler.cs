@@ -32,12 +32,8 @@ public class BurgerAssembler : MonoBehaviour
         SetSocket(topBunSocket, false);
         if (finalGrab != null) finalGrab.enabled = false;
 
-        // Rimuove Rigidbody/Collider indesiderati su parti statiche del modello (es. node_id117,
-        // il pane inferiore): se restano, la fisica li simula indipendentemente dal Rigidbody
-        // del root e si "staccano" visivamente quando il panino viene afferrato.
         CleanupStrayChildPhysics();
 
-        // Durante l'assemblaggio il panino resta kinematic e senza gravità
         var rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -164,7 +160,6 @@ public class BurgerAssembler : MonoBehaviour
                     Debug.LogWarning($"[Assembler] Complete: NESSUN Rigidbody su '{name}'!");
                 }
 
-                // Conta i collider rimasti sul burger (root, non figli distrutti)
                 var ownColliders = GetComponents<Collider>();
                 Debug.Log($"[Assembler] Complete: collider sul root '{name}' = {ownColliders.Length}");
 
@@ -178,14 +173,11 @@ public class BurgerAssembler : MonoBehaviour
                     Debug.LogWarning("[Assembler] Complete: finalGrab è NULL!");
                 }
 
-                // Il panino è pronto da mangiare: CameraCollider lo farà sparire quando viene
-                // avvicinato alla bocca, come già succede per mug/toast a colazione.
                 gameObject.tag = "Food";
 
                 onAssemblyComplete?.Invoke();
                 Debug.Log("Panino pronto da mangiare!");
 
-                // Controlla lo stato del rigidbody dopo 1 secondo
                 StartCoroutine(CheckPhysicsLater());
                 break;
         }
@@ -283,7 +275,7 @@ public class BurgerAssembler : MonoBehaviour
 
         bool first = true;
         Bounds b = new Bounds();
-        foreach (var r in GetComponentsInChildren<MeshRenderer>()) // solo mesh, niente particelle
+        foreach (var r in GetComponentsInChildren<MeshRenderer>())
         {
             if (!r.enabled) continue;
             if (first) { b = r.bounds; first = false; }

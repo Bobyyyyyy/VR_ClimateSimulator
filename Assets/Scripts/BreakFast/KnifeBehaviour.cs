@@ -7,7 +7,6 @@ public class Knife : MonoBehaviour
 
     void Start()
     {
-        // Assicuriamoci che il coltello parta pulito
         if (jamDecal != null)
             jamDecal.SetActive(false);
         
@@ -16,7 +15,7 @@ public class Knife : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasJam && other.TryGetComponent<JarBehaviour>(out _)) // Verifica che ci sia e scarta il risultato
+        if (!hasJam && other.TryGetComponent<JarBehaviour>(out _))
         {
             ApplyJam();
         }
@@ -43,7 +42,6 @@ public class Knife : MonoBehaviour
         bread.GetComponent<BreadBehaviour>().ApplyJam();
         hasJam = false;
 
-        // Disattiviamo la decal visiva sulla lama
         if (jamDecal != null)
         {
             jamDecal.SetActive(false);

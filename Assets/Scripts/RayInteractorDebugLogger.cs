@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-// Diagnostica temporanea per capire perché il laser sembra non "cliccare" la UI: logga hover,
-// select e (soprattutto) hover/press sulla UI per ogni XRRayInteractor trovato in scena, così si
-// vede in Console se il raggio arriva sul bottone e se il click viene davvero registrato.
 public class RayInteractorDebugLogger : MonoBehaviour
 {
     void Start()

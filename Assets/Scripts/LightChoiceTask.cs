@@ -13,7 +13,6 @@ public class LightChoiceTask : MonoBehaviour
     private bool choiceMade = false;
     private int shuttersOpenCount = 0;
 
-    // Collegato all'evento onFullyOpen di OGNI tapparella
     public void NotifyShutterOpen()
     {
         shuttersOpenCount++;
@@ -21,7 +20,6 @@ public class LightChoiceTask : MonoBehaviour
             MakeChoice(positive: true);
     }
 
-    // Collegato all'evento onTurnedOn dell'interruttore
     public void ChooseArtificial()
     {
         MakeChoice(positive: false);

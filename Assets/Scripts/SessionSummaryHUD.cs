@@ -2,10 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// Mostra un pannello nero world-space davanti alla camera quando l'ultima task della giornata
-// (Cena) si completa, con il nome dell'utente e il tempo impiegato per ciascuna task. I dati
-// arrivano da ActionLogger (Username + TaskDurations), che notifica tramite OnSessionComplete
-// nel momento esatto in cui TaskManager segnala che non ci sono più task da fare.
 public class SessionSummaryHUD : MonoBehaviour
 {
     [Tooltip("Distanza (metri) del pannello davanti alla camera")]

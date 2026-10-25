@@ -11,7 +11,6 @@ public class Pistol : MonoBehaviour
     public AudioClip clip;
     private AudioSource source;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
     }
@@ -25,7 +24,6 @@ public class Pistol : MonoBehaviour
             rb.linearVelocity = firePoint.forward * bulletSpeed;
         }
 
-        // Destroy the bullet after a set time
         Destroy(bullet, bulletLifetime);
         }
 }

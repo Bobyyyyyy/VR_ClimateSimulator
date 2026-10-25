@@ -17,8 +17,6 @@ public class TimerManager : MonoBehaviour
 
     void Start()
     {
-        // IsRunning resta false finché non viene chiamato BeginSession(): il timer parte solo
-        // dopo che l'utente ha confermato il proprio username (vedi UsernamePrompt.OnConfirm).
         if (TaskManager.Instance != null)
             TaskManager.Instance.onTaskChanged.AddListener(OnTaskChanged);
     }
@@ -42,9 +40,6 @@ public class TimerManager : MonoBehaviour
         onElapsedTimeChanged?.Invoke(ElapsedTime);
     }
 
-    // Il task corrente diventa null quando currentTaskIndex supera l'ultimo task
-    // della lista (la Cena, l'ultimo task della giornata): è il segnale che tutte
-    // le task sono state completate.
     private void OnTaskChanged(TaskData currentTask)
     {
         if (currentTask == null)

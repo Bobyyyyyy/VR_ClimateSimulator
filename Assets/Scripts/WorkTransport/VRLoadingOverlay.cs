@@ -82,10 +82,6 @@ public class VRLoadingOverlay : MonoBehaviour
 
         overlayCanvas.SetActive(false);
 
-        // Le canvas world-space che usano la camera del VRPlayer come event camera vanno
-        // disattivate finché quella camera resta spenta: altrimenti l'EventSystem continua a
-        // proiettare i raycast su una camera disattivata e spamma
-        // "Screen position out of view frustum (-nan(ind), -nan(ind))" ogni frame.
         disabledRaycasters.Clear();
         foreach (var raycaster in FindObjectsByType<GraphicRaycaster>(FindObjectsSortMode.None))
         {
@@ -98,7 +94,6 @@ public class VRLoadingOverlay : MonoBehaviour
         }
 
         VRPlayer.SetActive(false);
-        //Disable VRPlayer and set newCamera
         LoadingScreenClone.tag = "MainCamera";
         LoadingScreenClone.SetActive(true);
         overlayCanvas.SetActive(true);
@@ -114,7 +109,6 @@ public class VRLoadingOverlay : MonoBehaviour
             yield return null;
         }
 
-        // Loading finished: Enable VRPlayer and disable Camera
         overlayCanvas.SetActive(false);
         LoadingScreenClone.SetActive(false); 
         LoadingScreenCamera.tag = "Untagged";
@@ -138,6 +132,6 @@ public class VRLoadingOverlay : MonoBehaviour
 
         ActionLogger.Instance?.LogAction(workTask.taskName, "Task completata", "");
 
-        TaskManager.Instance.UpdateTaskProgress(workTask); // 0 punti: è solo una schermata di attesa
+        TaskManager.Instance.UpdateTaskProgress(workTask);
     }
 }

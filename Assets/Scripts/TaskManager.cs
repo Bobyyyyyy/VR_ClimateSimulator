@@ -46,9 +46,6 @@ public class TaskManager : MonoBehaviour
     {
         Instance = this;
 
-        // I TaskData sono ScriptableObject (asset di progetto): a differenza degli oggetti di
-        // scena, Unity NON li ripristina uscendo dalla Play Mode, quindi isCompleted resterebbe
-        // "true" da un test precedente anche in sessioni successive se non lo resettiamo qui.
         if (activeTasks != null)
         {
             foreach (var task in activeTasks)
@@ -123,9 +120,6 @@ public class TaskManager : MonoBehaviour
 
     public void UpdateTaskProgress(TaskData completedTask)
     {
-        // Nota: completedTask di solito È già lo stesso asset presente in activeTasks (con
-        // isCompleted già impostato dal chiamante), quindi confrontare "isCompleted !=" qui
-        // confronterebbe il valore con se stesso e non troverebbe mai corrispondenza.
         TaskData task = activeTasks.Find(task => task.name == completedTask.name);
 
         if (task != null)

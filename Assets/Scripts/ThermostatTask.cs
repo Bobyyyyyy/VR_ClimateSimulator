@@ -10,10 +10,8 @@ public class ThermostatTask : MonoBehaviour
 
     void Awake() => Instance = this;
 
-    // Collegato al bottone HUD "Spegni" sul termostato: scelta ecologica.
     public void TurnOff() => MakeChoice(ecological: true);
 
-    // Collegato al bottone HUD "Lascialo acceso" sul termostato: scelta non ecologica.
     public void LeaveOn() => MakeChoice(ecological: false);
 
     private void MakeChoice(bool ecological)

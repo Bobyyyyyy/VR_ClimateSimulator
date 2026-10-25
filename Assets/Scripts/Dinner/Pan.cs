@@ -7,10 +7,6 @@ public class Pan : MonoBehaviour
 
     private StoveBurner currentBurner;
 
-    /// <summary>
-    /// True se la padella è su un fornello con la manopola girata.
-    /// Viene letto da CookableFood.
-    /// </summary>
     public bool IsHot => currentBurner != null && currentBurner.IsActive;
 
     private void OnTriggerEnter(Collider other)

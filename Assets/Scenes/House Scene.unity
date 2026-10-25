@@ -13521,6 +13521,7 @@ GameObject:
   - component: {fileID: 9123456789012345609}
   - component: {fileID: 9123456789012345610}
   - component: {fileID: 9123456789012345611}
+  - component: {fileID: 9123456789012345612}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13528,6 +13529,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9123456789012345612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576603587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca1b2af72ee4521932b25e7b32b8e3d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::IntroVideoPlayer
+  introClip: {fileID: 32900000, guid: 85186c516199493da23f02b326952521, type: 3}
+  distanceFromCamera: 2
+  videoWidthMeters: 2
+  onFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &576603588
 MonoBehaviour:
   m_ObjectHideFlags: 0

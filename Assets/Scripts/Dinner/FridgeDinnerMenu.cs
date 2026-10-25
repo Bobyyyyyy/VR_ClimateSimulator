@@ -47,8 +47,6 @@ public class FridgeDinnerMenu : MonoBehaviour
         UpdateMenuVisibility();
     }
 
-    // Il menu del frigo compare solo quando è il turno del task cena
-    // (cioè non prima che il task del lavoro sia finito).
     private void UpdateMenuVisibility()
     {
         if (menuCanvas == null) return;
@@ -79,7 +77,6 @@ public class FridgeDinnerMenu : MonoBehaviour
             SpawnGrabbable(sodaPrefab, orderDinnerAnchor, new Vector3(0.25f, 0f, 0f), spawnedOrderItems, Vector3.one * 0.3f);
         }
 
-        // Ordinare la cena non richiede altri passaggi: è già pronta da mangiare.
         CompleteDinnerTask();
     }
 

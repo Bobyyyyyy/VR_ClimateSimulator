@@ -15,7 +15,6 @@ public class SliceableBread : MonoBehaviour
     {
         if (_hasBeenSliced) return;
 
-        // Il coltello deve avere il tag "Knife"
         if (!other.CompareTag("Knife")) return;
 
         Slice();
@@ -25,15 +24,12 @@ public class SliceableBread : MonoBehaviour
     {
         _hasBeenSliced = true;
 
-        // Sgancia le metà dal padre così diventano indipendenti
         topHalf.transform.SetParent(null);
         bottomHalf.transform.SetParent(null);
 
-        // Attivale (se erano disattivate)
         topHalf.SetActive(true);
         bottomHalf.SetActive(true);
 
-        // Piccola spinta per separarle
         Rigidbody topRb = topHalf.GetComponent<Rigidbody>();
         Rigidbody bottomRb = bottomHalf.GetComponent<Rigidbody>();
 
@@ -42,7 +38,6 @@ public class SliceableBread : MonoBehaviour
         if (bottomRb != null)
             bottomRb.AddForce(Vector3.down * separationForce, ForceMode.Impulse);
 
-        // Disattiva il contenitore padre
         gameObject.SetActive(false);
     }
 }

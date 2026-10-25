@@ -24,7 +24,7 @@ public class WorldMusicManager : MonoBehaviour
         source = GetComponent<AudioSource>();
         source.playOnAwake = false;
         source.loop = true;
-        source.spatialBlend = 0f; // musica di sottofondo, non 3D
+        source.spatialBlend = 0f;
         source.volume = volume;
     }
 
@@ -42,9 +42,6 @@ public class WorldMusicManager : MonoBehaviour
             TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
     }
 
-    // Richiamata ogni volta che un task finisce e si passa al successivo: ricontrolliamo
-    // lo stato attuale del mondo, così la musica resta coerente anche se non è cambiata
-    // soglia (onWorldGood/onWorldNeutral/onWorldBad non sarebbero scattati).
     private void OnTaskChanged(TaskData newCurrentTask) => UpdateForCurrentState();
 
     private void UpdateForCurrentState()
@@ -71,7 +68,6 @@ public class WorldMusicManager : MonoBehaviour
     public void PlayNeutral() => PlayClip(neutralMusic);
     public void PlayBad() => PlayClip(badMusic);
 
-    // Abbassa (o ripristina) il volume della musica, ad es. mentre parla la radio.
     public void SetDucked(bool ducked)
     {
         isDucked = ducked;
@@ -82,7 +78,6 @@ public class WorldMusicManager : MonoBehaviour
     {
         if (clip == null || clip == currentClip) return;
 
-        // Ferma la traccia precedente prima di passare a quella nuova.
         if (source.isPlaying) source.Stop();
 
         currentClip = clip;

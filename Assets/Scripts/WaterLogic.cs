@@ -48,7 +48,6 @@ public class RubinettoVR : MonoBehaviour
         isOn = !isOn;
         targetAngle = isOn ? snapAngle : 0f;
 
-        // L'acqua parte/si ferma subito al grab
         if (acquaEffect == null) return;
         if (isOn && !acquaEffect.isPlaying) acquaEffect.Play();
         else if (!isOn && acquaEffect.isPlaying) acquaEffect.Stop();

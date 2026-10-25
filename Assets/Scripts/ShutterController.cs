@@ -17,8 +17,8 @@ public class MovimentoLineare : MonoBehaviour
     public float velocita = 2f;
 
     [Header("Impostazioni Luce")]
-    public float intensitaLuceMassima = 2f; // Quanta luce c'è quando è aperta
-    public float intensitaLuceMinima = 0f;  // Quanta luce c'è quando è chiusa
+    public float intensitaLuceMassima = 2f;
+    public float intensitaLuceMinima = 0f;
 
     [Header("Task giornata (opzionale)")]
     [Tooltip("Sparato una sola volta quando la tapparella raggiunge l'apertura massima")]
@@ -50,12 +50,10 @@ public class MovimentoLineare : MonoBehaviour
             nuovaY = Mathf.Clamp(nuovaY, yBassa, yAlta);
             oggettoDaMuovere.localPosition = new Vector3(posizioneAttuale.x, nuovaY, posizioneAttuale.z);
 
-            // --- GESTIONE DELLA LUCE ---
             float percentualeApertura = Mathf.InverseLerp(yBassa, yAlta, nuovaY);
 
             if (luceDiRimbalzo != null)
             {
-                // Applichiamo l'intensità in base alla percentuale
                 luceDiRimbalzo.intensity = Mathf.Lerp(intensitaLuceMinima, intensitaLuceMassima, percentualeApertura);
             }
 

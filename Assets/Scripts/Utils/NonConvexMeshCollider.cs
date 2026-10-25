@@ -11,7 +11,6 @@ Anyhow: if you want to use it to provide non-convex mesh colliding in your own u
 
 */
 
-
 using System;
 using UnityEngine;
 using System.Collections;
@@ -76,10 +75,8 @@ public class NonConvexMeshCollider : MonoBehaviour
         {
             var collidersGo = CreateColliderChildGameObject(go, meshFilter);
 
-            //create compound colliders
             var boxes = CreateMeshIntersectingBoxes(collidersGo).ToArray();
 
-            //merge boxes to create bigger and less ones
             var mergedBoxes =
                 shouldMerge
                     ? MergeBoxes(boxes.ToArray())
@@ -93,7 +90,6 @@ public class NonConvexMeshCollider : MonoBehaviour
             }
             Debug.Log("NonConvexMeshCollider: " + mergedBoxes.Length + " box colliders created");
 
-            //cleanup stuff not needed anymore on collider child obj
             DestroyImmediate(collidersGo.GetComponent<MeshFilter>());
             DestroyImmediate(collidersGo.GetComponent<MeshCollider>());
             DestroyImmediate(collidersGo.GetComponent<Rigidbody>());
@@ -102,7 +98,6 @@ public class NonConvexMeshCollider : MonoBehaviour
         }
         finally
         {
-            //reset original state of root object
             go.transform.parent = parentGo;
             go.transform.localPosition = localPos;
             go.transform.localRotation = localRot;
@@ -145,7 +140,6 @@ public class NonConvexMeshCollider : MonoBehaviour
 
     private static GameObject CreateColliderChildGameObject(GameObject go, MeshFilter meshFilter)
     {
-        //ensure collider child gameobject exists
         var collidersTransform = go.transform.Find("Colliders");
         GameObject collidersGo;
         if (collidersTransform != null)
@@ -158,7 +152,6 @@ public class NonConvexMeshCollider : MonoBehaviour
             collidersGo.transform.localPosition = Vector3.zero;
         }
 
-        //reset collider child gameobject
         foreach (var bc in collidersGo.GetComponents<BoxCollider>())
             DestroyImmediate(bc);
         var mf = collidersGo.GetComponent<MeshFilter>();
@@ -171,7 +164,6 @@ public class NonConvexMeshCollider : MonoBehaviour
         rd.isKinematic = true;
         rd.useGravity = false;
 
-        //setup collider child gameobject
         mf = collidersGo.AddComponent<MeshFilter>();
         mf.sharedMesh = meshFilter.sharedMesh;
         mc = collidersGo.AddComponent<MeshCollider>();

@@ -67,8 +67,6 @@ public class ThermostatController : MonoBehaviour
 
     }
 
-    // Collegati ai due bottoni HUD del termostato (task giornata): la scelta è binaria,
-    // esattamente come le altre task del giorno (luce, colazione, cena, lavoro).
     public void TurnOff()
     {
         ThermostatTask.Instance?.TurnOff();
@@ -76,7 +74,6 @@ public class ThermostatController : MonoBehaviour
 
         HideChoiceButtons();
 
-        // Spento (scelta ecologica): niente più display, suono o regolazione temperatura.
         if (displayScreen != null) displayScreen.gameObject.SetActive(false);
         PlayIdleSound(false);
         if (increaseButton != null) increaseButton.interactable = false;

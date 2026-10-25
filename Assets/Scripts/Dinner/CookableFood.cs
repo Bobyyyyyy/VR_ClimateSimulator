@@ -38,7 +38,6 @@ public class CookableFood : MonoBehaviour
     private Pan currentPan;
     private bool hasRespawned = false;
 
-    // Proprietà pubbliche per DinnerTask
     public bool IsCooked => currentState == CookState.Cooked;
     public bool IsBurnt => currentState == CookState.Burnt;
 
@@ -46,7 +45,6 @@ public class CookableFood : MonoBehaviour
     {
         SetStateMaterials(CookState.Raw);
 
-        // Se non hai assegnato uno spawn point, salva la posizione iniziale
         if (spawnPoint == null)
         {
             GameObject sp = new GameObject($"SpawnPoint_{gameObject.name}");
@@ -78,7 +76,6 @@ public class CookableFood : MonoBehaviour
             SetStateMaterials(CookState.Burnt);
             Debug.Log("Tutto il cibo è BRUCIATO!");
 
-            // Spawna un nuovo oggetto crudo dopo un delay
             if (!hasRespawned && rawPrefab != null)
             {
                 hasRespawned = true;
@@ -91,8 +88,6 @@ public class CookableFood : MonoBehaviour
     {
         GameObject newFood = Instantiate(rawPrefab, spawnPoint.position, spawnPoint.rotation);
         
-        // Il nuovo oggetto avrà il suo CookableFood già configurato dal prefab
-        // Assegna lo stesso spawn point così anche il prossimo respawna lì
         CookableFood newCookable = newFood.GetComponent<CookableFood>();
         if (newCookable != null)
         {

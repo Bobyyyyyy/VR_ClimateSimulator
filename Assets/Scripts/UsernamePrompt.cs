@@ -5,13 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
-// Mostra, all'avvio della scena, un pannello world-space centrato davanti alla camera con un
-// campo di testo e una tastiera virtuale cliccabile (via ray XR o mouse) per digitare il proprio
-// username, dato che in VR con OpenXR generico non esiste una tastiera di sistema da invocare.
-// Il pannello viene costruito via codice (non richiede wiring in Editor) e distrutto alla
-// conferma. Il timer e il logging delle azioni (TimerManager/ActionLogger) restano fermi finché
-// l'utente non conferma: solo da quel momento la sessione è considerata "iniziata" e ogni riga
-// del log riporta il suo nome.
 public class UsernamePrompt : MonoBehaviour
 {
     [Tooltip("Distanza (metri) del pannello davanti alla camera")]
@@ -33,8 +26,15 @@ public class UsernamePrompt : MonoBehaviour
 
     void Awake()
     {
-        BuildUI();
         DisableLocomotion();
+    }
+
+    void Start()
+    {
+        if (IntroVideoPlayer.Instance != null && IntroVideoPlayer.Instance.IsPlaying)
+            IntroVideoPlayer.Instance.onFinished.AddListener(BuildUI);
+        else
+            BuildUI();
     }
 
     private void BuildUI()
@@ -45,9 +45,6 @@ public class UsernamePrompt : MonoBehaviour
         Canvas canvas = canvasRoot.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.WorldSpace;
         canvasRoot.AddComponent<CanvasScaler>();
-        // TrackedDeviceGraphicRaycaster (non il GraphicRaycaster standard) è quello che permette
-        // agli XR Ray/Poke Interactor di generare eventi UI (click) sui Button del canvas: è lo
-        // stesso componente già usato dal canvas del Thermostat per l'interazione in VR.
         TrackedDeviceGraphicRaycaster raycasterInit = canvasRoot.AddComponent<TrackedDeviceGraphicRaycaster>();
         raycasterInit.ignoreReversedGraphics = false;
 
@@ -70,9 +67,6 @@ public class UsernamePrompt : MonoBehaviour
         Image panelImage = panel.AddComponent<Image>();
         panelImage.color = new Color(0f, 0f, 0f, 0.85f);
 
-        // Tutti gli elementi sono ancorati al centro-alto del pannello (0.5, 1) con offset Y
-        // decrescenti: la loro posizione non dipende dall'altezza finale del pannello, quindi
-        // possiamo dimensionare canvas/pannello alla fine, una volta noto il contenuto totale.
         float cursorY = -20f;
 
         cursorY = CreateTitle(panel.transform, cursorY);
@@ -161,16 +155,11 @@ public class UsernamePrompt : MonoBehaviour
         return cursorY - height - SectionGap;
     }
 
-    // Tastiera virtuale: serve perché in VR con OpenXR generico (senza SDK proprietario, es.
-    // Meta XR) non esiste una tastiera di sistema da invocare quando l'InputField prende il
-    // focus. I tasti sono normali Button world-space, cliccabili col ray XR come ogni altro
-    // bottone del gioco (es. quelli di FridgeDinnerMenu/BreakfastCanvas).
     private float CreateKeyboard(Transform parent, float cursorY)
     {
         cursorY = CreateLetterRow(parent, Row1, cursorY);
         cursorY = CreateLetterRow(parent, Row2, cursorY);
 
-        // Riga 3: lettere Z-M più Backspace, allineate con la stessa larghezza tasto delle righe sopra
         float keyWidth = RowKeyWidth(Row1.Length);
         float row3Width = Row3.Length * keyWidth + (Row3.Length - 1) * KeyGap + KeyGap + keyWidth * 1.6f;
         float startX = -row3Width / 2f + keyWidth / 2f;
@@ -188,7 +177,6 @@ public class UsernamePrompt : MonoBehaviour
 
         cursorY -= KeyHeight + RowGap;
 
-        // Riga 4: barra spaziatrice, larga quanto l'intera tastiera
         float spaceWidth = RowKeyWidth(Row1.Length) * Row1.Length + (Row1.Length - 1) * KeyGap;
         CreateKey(parent, " ", new Vector2(0f, cursorY), new Vector2(spaceWidth, KeyHeight), () => AppendChar(" "), "Space");
         cursorY -= KeyHeight + SectionGap;
@@ -212,8 +200,6 @@ public class UsernamePrompt : MonoBehaviour
         return cursorY - KeyHeight - RowGap;
     }
 
-    // Larghezza del singolo tasto calcolata sulla riga più lunga (Row1, 10 lettere), così tutte
-    // le righe usano tasti della stessa dimensione e restano allineate/centrate.
     private static float RowKeyWidth(int widestRowKeyCount)
     {
         const float innerMargin = 40f;
@@ -340,9 +326,6 @@ public class UsernamePrompt : MonoBehaviour
         Destroy(this);
     }
 
-    // Finché l'username non è confermato il giocatore è fermo davanti al pannello: disabilitare
-    // tutti i LocomotionProvider (move/turn/teleport/gravity) impedisce di allontanarsi o
-    // vagare per la stanza mentre sta ancora scrivendo il proprio nome.
     private void DisableLocomotion()
     {
         foreach (LocomotionProvider provider in FindObjectsByType<LocomotionProvider>(FindObjectsSortMode.None))
@@ -355,9 +338,6 @@ public class UsernamePrompt : MonoBehaviour
             provider.enabled = true;
     }
 
-    // Il laser serve solo per digitare lo username su questa tastiera virtuale: da qui in poi
-    // l'interazione con la UI (bottoni del termostato, menu cena, ecc.) avviene toccandola
-    // direttamente con la mano/controller (XRPokeInteractor), senza un raggio visibile.
     private void DisableRayInteractors()
     {
         foreach (XRRayInteractor ray in FindObjectsByType<XRRayInteractor>(FindObjectsSortMode.None))

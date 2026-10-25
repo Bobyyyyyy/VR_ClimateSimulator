@@ -4,13 +4,6 @@ using System.Globalization;
 using System.IO;
 using UnityEngine;
 
-// Registra su file (CSV) ogni azione rilevante compiuta dall'utente durante la sessione,
-// una riga per azione: quando è avvenuta, per quale task, cosa è successo, con quali
-// dettagli specifici e il punteggio generale in quel momento. Ogni task-script chiama
-// LogAction(...) nei propri punti di scelta/completamento (vedi LightChoiceTask, BinDetector,
-// TrashTask, BreakfastTask, FridgeDinnerMenu, VRLoadingOverlay, ThermostatTask/Controller).
-// La sessione (e quindi il logging vero e proprio) parte solo dopo BeginSession(username),
-// chiamato da UsernamePrompt una volta che il giocatore ha confermato il proprio nome.
 public class ActionLogger : MonoBehaviour
 {
     public static ActionLogger Instance;
@@ -20,8 +13,6 @@ public class ActionLogger : MonoBehaviour
 
     public string Username { get; private set; } = "Unknown";
 
-    // Sparato quando l'ultima task della giornata (Cena) si completa: TaskDurations a quel
-    // punto contiene già la durata di ogni task, comprese quella appena finita.
     public event Action OnSessionComplete;
 
     private readonly List<(string TaskName, float Seconds)> taskDurations = new List<(string, float)>();
@@ -36,23 +27,13 @@ public class ActionLogger : MonoBehaviour
     {
         Instance = this;
 
-        // Application.dataPath è ".../Assets" in Editor e ".../<Prodotto>_Data" in build:
-        // risalendo di un livello si ottiene rispettivamente la root del progetto o la cartella
-        // accanto all'eseguibile, entrambe facili da trovare senza scavare in AppData.
         string folder = Path.Combine(Directory.GetParent(Application.dataPath).FullName, "Logs");
         Directory.CreateDirectory(folder);
 
         filePath = Path.Combine(folder, fileName);
 
-        // Un unico file accumula tutte le sessioni: lo creiamo con l'intestazione solo se non
-        // esiste ancora, altrimenti le righe successive vanno semplicemente in coda a quelle
-        // già presenti (File.AppendAllText in LogAction non tronca mai il file).
         if (!File.Exists(filePath))
         {
-            // "sep=;" è un'estensione riconosciuta da Excel per forzare il delimitatore di colonna
-            // a prescindere dal separatore di lista configurato nel Pannello di controllo/locale
-            // (in italiano è ";" perché "," è il separatore decimale, quindi un CSV con "," come
-            // delimitatore viene aperto da Excel IT come un'unica colonna).
             File.WriteAllText(filePath, "sep=;" + Environment.NewLine
                 + "Utente;Timestamp;Task;Azione;Dettagli;TempoTask(s);Punteggio" + Environment.NewLine);
         }
@@ -70,9 +51,6 @@ public class ActionLogger : MonoBehaviour
             TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
     }
 
-    // Chiamato da UsernamePrompt dopo la conferma dello username: da qui in poi ogni riga del
-    // log riporta l'utente, e il task corrente (già selezionato da TaskManager all'avvio) viene
-    // registrato come "avviato" solo adesso, non prima che l'utente si sia identificato.
     public void BeginSession(string username)
     {
         Username = string.IsNullOrEmpty(username) ? "Unknown" : username;
@@ -84,8 +62,6 @@ public class ActionLogger : MonoBehaviour
     {
         if (!sessionStarted) return;
 
-        // Il task che sta per lasciare il posto al successivo (o, se newTask è null, l'ultimo
-        // della giornata appena completato) va registrato con la sua durata finale.
         if (!string.IsNullOrEmpty(currentTaskName))
             taskDurations.Add((currentTaskName, ElapsedInCurrentTask()));
 
@@ -97,8 +73,6 @@ public class ActionLogger : MonoBehaviour
             OnSessionComplete?.Invoke();
     }
 
-    // Secondi trascorsi dall'inizio del task correntemente attivo: usato per popolare
-    // "TempoTask(s)" su ogni riga senza che ogni singolo script debba tenere un proprio timer.
     public float ElapsedInCurrentTask() => Time.time - currentTaskStartTime;
 
     public void LogAction(string taskName, string action, string details)

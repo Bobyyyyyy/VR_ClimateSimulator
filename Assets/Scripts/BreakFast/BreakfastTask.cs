@@ -54,7 +54,6 @@ public class BreakfastTask : MonoBehaviour
         UpdateCanvasVisibility();
     }
 
-    // Il canvas compare solo quando è il turno del task colazione (spazzatura completata).
     private void UpdateCanvasVisibility()
     {
         if (BreakfastCanvas == null) return;
@@ -65,8 +64,6 @@ public class BreakfastTask : MonoBehaviour
         BreakfastCanvas.SetActive(shouldShow);
     }
 
-    // Il percorso spuntino non ha uno step di preparazione (il cibo è già pronto da mangiare),
-    // quindi la campanella deve poter far scattare il controllo di completamento in ogni momento.
     public bool IsCurrentStepReady() => !isHealthy || stepFlags[step];
 
     [ContextMenu("Test Completion Step")]
@@ -87,7 +84,6 @@ public class BreakfastTask : MonoBehaviour
 
         if (isHealthy)
         {
-            // Colazione sana: juice station e toast station appaiono insieme, subito.
             if (JuiceStation != null)
             {
                 JuiceStation.SetActive(true);
@@ -101,9 +97,6 @@ public class BreakfastTask : MonoBehaviour
         }
         else if (SnackStation != null)
         {
-            // Percorso spuntino: gli oggetti dentro la Snack Station sono già pronti da mangiare
-            // (già taggati Food/Beverage e afferrabili), quindi basta tracciarli per sapere quando
-            // sono stati tutti consumati.
             SnackStation.SetActive(true);
             snackItems.AddRange(FindConsumables(SnackStation));
             initialSnackItemCount = snackItems.Count;
@@ -165,7 +158,6 @@ public class BreakfastTask : MonoBehaviour
                     }
                     else
                     {
-                        // Il mug è stato bevuto (consumato): nascondi di nuovo la juice station.
                         if (JuiceStation != null)
                         {
                             instantiatedObjects.Remove(JuiceStation);
@@ -188,7 +180,6 @@ public class BreakfastTask : MonoBehaviour
                     }
                     else
                     {
-                        // Il toast è stato mangiato: nascondi di nuovo la toast station e togli la campanella.
                         if (ToastStation != null)
                         {
                             instantiatedObjects.Remove(ToastStation);
@@ -215,8 +206,6 @@ public class BreakfastTask : MonoBehaviour
             snackItems.RemoveAll(obj => obj == null);
             int eaten = initialSnackItemCount - snackItems.Count;
 
-            // Non serve finire tutta la Snack Station: basta averne mangiati/bevuti almeno
-            // minSnackItemsToEat (o proprio tutti, se ce ne sono meno della soglia).
             if (eaten >= minSnackItemsToEat || snackItems.Count == 0)
             {
                 if (SnackStation != null) SnackStation.SetActive(false);
@@ -239,8 +228,6 @@ public class BreakfastTask : MonoBehaviour
 
         task.isCompleted = true;
 
-        // Spuntino = scelta poco sana/ecologica: toglie punti invece di darne, come le altre
-        // task binarie del giorno (termostato, luce).
         if (isHealthy)
             TaskManager.Instance.addPoints(TaskManager.Instance.pointsPerChoice);
         else

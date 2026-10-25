@@ -42,9 +42,6 @@ public class WeatherManager : MonoBehaviour
             TaskManager.Instance.onTaskChanged.RemoveListener(OnTaskChanged);
     }
 
-    // Richiamata ogni volta che un task finisce e si passa al successivo: ricontrolliamo
-    // lo stato attuale del mondo, così i prop restano coerenti anche se non è cambiata
-    // soglia (onWorldGood/onWorldNeutral/onWorldBad non sarebbero scattati).
     private void OnTaskChanged(TaskData newCurrentTask) => UpdateForCurrentState();
 
     private void UpdateForCurrentState()

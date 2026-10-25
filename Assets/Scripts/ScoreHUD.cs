@@ -16,8 +16,44 @@ public class ScoreHUD : MonoBehaviour
             transform.SetParent(cam.transform, false);
     }
 
+    // Promemoria dei comandi, volutamente generici (valgono per qualsiasi task): le azioni
+    // sono quelle del rig, Select = Grip e Activate = Trigger su entrambi i controller.
+    private const string ControlHints = "Grip button: grab\nTrigger button: use";
+
+    private TextMeshProUGUI controlHints;
+
+    // Il pannello dello username occupa la stessa zona: i comandi compaiono solo dopo la conferma.
+    void Update()
+    {
+        if (controlHints != null)
+            controlHints.gameObject.SetActive(!UsernamePrompt.IsActive);
+    }
+
+    private void BuildControlHints()
+    {
+        if (currentTaskText == null) return;
+
+        GameObject go = new GameObject("Control Hints", typeof(RectTransform));
+        go.transform.SetParent(transform, false);
+
+        RectTransform rect = (RectTransform)go.transform;
+        rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = new Vector2(0f, -30f);
+        rect.sizeDelta = new Vector2(380f, 60f);
+
+        TextMeshProUGUI hints = controlHints = go.AddComponent<TextMeshProUGUI>();
+        hints.font = currentTaskText.font;
+        hints.fontSharedMaterial = currentTaskText.fontSharedMaterial;
+        hints.fontSize = 18;
+        hints.color = currentTaskText.color;
+        hints.alignment = TextAlignmentOptions.Center;
+        hints.text = ControlHints;
+    }
+
     void Start()
     {
+        BuildControlHints();
+
         if (TaskManager.Instance != null)
         {
             TaskManager.Instance.onPointsChanged.AddListener(OnGeneralScoreChanged);

@@ -97,3 +97,13 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Unity build output and debug folders
+*_BackUpThisFolder_ButDontShipItWithYourGame/
+*_BurstDebugInformation_DoNotShip/
+*.slnx
+
+# LaTeX auxiliary files (keep main.tex, figures/ and the final PDF)
+/docs/*.aux
+/docs/*.log
+/docs/*.out

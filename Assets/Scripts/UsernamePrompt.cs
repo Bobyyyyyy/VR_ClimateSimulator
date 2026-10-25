@@ -24,9 +24,31 @@ public class UsernamePrompt : MonoBehaviour
     private RectTransform canvasRect;
     private TMP_InputField inputField;
 
+    public static bool IsActive { get; private set; }
+
+    private LocomotionProvider[] providers;
+    private bool locomotionLocked;
+
     void Awake()
     {
+        IsActive = true;
+        providers = FindObjectsByType<LocomotionProvider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         DisableLocomotion();
+    }
+
+    void OnDestroy()
+    {
+        IsActive = false;
+    }
+
+    // Il blocco vale per tutta la durata del video e dell'inserimento nome: se qualcosa
+    // riattiva un provider nel frattempo, lo rispegniamo subito.
+    void LateUpdate()
+    {
+        if (!locomotionLocked) return;
+
+        foreach (LocomotionProvider provider in providers)
+            if (provider != null && provider.enabled) provider.enabled = false;
     }
 
     void Start()
@@ -328,14 +350,16 @@ public class UsernamePrompt : MonoBehaviour
 
     private void DisableLocomotion()
     {
-        foreach (LocomotionProvider provider in FindObjectsByType<LocomotionProvider>(FindObjectsSortMode.None))
-            provider.enabled = false;
+        locomotionLocked = true;
+        foreach (LocomotionProvider provider in providers)
+            if (provider != null) provider.enabled = false;
     }
 
     private void EnableLocomotion()
     {
-        foreach (LocomotionProvider provider in FindObjectsByType<LocomotionProvider>(FindObjectsSortMode.None))
-            provider.enabled = true;
+        locomotionLocked = false;
+        foreach (LocomotionProvider provider in providers)
+            if (provider != null) provider.enabled = true;
     }
 
     private void DisableRayInteractors()
